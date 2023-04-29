@@ -1,3 +1,31 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form__input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.login-form__label {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.login-form__input {
+  flex: 3;
+  padding: 0.3rem;
+}
+
+.login-form__submit {
+  margin: auto;
+  margin-top: 0.5rem;
+  width: 100px;
+  padding: 0.2rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,4 +40,15 @@ body {
 
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.page {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  padding: 2rem;
+}
+
+.heading {
+  margin-bottom: 1rem;
 }/*# sourceMappingURL=main.css.map */

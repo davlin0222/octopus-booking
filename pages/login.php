@@ -11,9 +11,12 @@
 </head>
 
 <body>
-    <h1>Octopus Booking - Login</h1>
+    <div class="page">
 
-    <?php include("../components/login-form/login-form.php") ?>
+        <h1 class="heading">Octopus Booking - Login</h1>
+
+        <?php include("../components/login-form/login-form.php") ?>
+    </div>
 </body>
 
 </html>

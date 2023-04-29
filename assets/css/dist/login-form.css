@@ -1,0 +1,22 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form__input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.login-form__label {
+  margin-right: 16px;
+}
+
+.login-form__input {
+  flex: 1;
+}
+
+.login-form__submit {
+  margin-top: 16px;
+}/*# sourceMappingURL=login-form.css.map */
