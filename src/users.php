@@ -22,15 +22,21 @@ function createUser($email, $password, $first_name, $last_name, $phone_number, $
 
 function verifyUserCredentials($email, $password)
 {
-    $query = "SELECT password_hash FROM users WHERE email = ?";
+    $query = "SELECT user_id, email, password_hash, role_id FROM users WHERE email = ?";
     $result = executeQuery($query, "s", [$email]);
 
-    $user = mysqli_fetch_assoc($result);
-    if (!$user) return false;
-    $password_hash = $user["password_hash"];
+    $databaseUser = mysqli_fetch_assoc($result);
+    if (!$databaseUser) return false;
+    $password_hash = $databaseUser["password_hash"];
+
+    $responseUser = [
+        "id" => $databaseUser["user_id"],
+        "email" => $databaseUser["email"],
+        "role_id" => $databaseUser["role_id"]
+    ];
 
     // If the query returned a result, verify the password hash
-    if (password_verify($password, $password_hash)) return true; // credentials are valid
+    if (password_verify($password, $password_hash)) return [true, $responseUser]; // credentials are valid
 
     // If the query did not return a result or the password is invalid
     return false; // credentials are invalid

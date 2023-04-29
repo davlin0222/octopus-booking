@@ -3,9 +3,7 @@
 require("../src/users.php");
 require("../src/api-response.php");
 require("../src/error-handler.php");
-
-// define the employee role ID
-$EMPLOYEE_ROLE_ID = 1;
+require("../src/constants.php");
 
 // get the request body as JSON and decode it
 $requestBody = json_decode(file_get_contents('php://input'), true);
@@ -19,7 +17,7 @@ $phoneNumber = $requestBody['phoneNumber'];
 
 try {
     // create the user with the extracted data
-    createUser($email, $password, $firstName, $lastName, $phoneNumber, $EMPLOYEE_ROLE_ID);
+    createUser($email, $password, $firstName, $lastName, $phoneNumber, $ROLE_IDS["employee"]);
     echo jsonResponse(true);
 } catch (\Throwable $exception) {
     echo JsonErrorResponse($exception);
