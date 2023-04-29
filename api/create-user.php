@@ -1,6 +1,7 @@
 <?php
 
 require("../src/users.php");
+require("../src/api-response.php");
 require("../src/error-handler.php");
 
 // define the employee role ID
@@ -20,11 +21,7 @@ $phoneNumber = $requestBody['phoneNumber'];
 try {
     // create the user with the extracted data
     createUser($email, $password, $firstName, $lastName, $phoneNumber, $EMPLOYEE_ROLE_ID);
-
-    $response = [
-        "success" => true
-    ];
-    echo json_encode($response);
+    echo response(true);
 } catch (\Throwable $exception) {
-    respondWithError($exception);
+    echo errorResponse($exception);
 }

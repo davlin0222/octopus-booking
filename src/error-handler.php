@@ -2,15 +2,14 @@
 
 set_error_handler(function ($errorNumber, $errorString, $errorFile, $errorLine) {
     $exception = new ErrorException($errorString, 0, $errorNumber, $errorFile, $errorLine);
-    respondWithError($exception);
+    echo errorResponse($exception);
 });
 
-function respondWithError($exception)
+function errorResponse($exception)
 {
     $response = [
         "success" => false,
         "errorMessage" => $exception->getMessage()
     ];
-    echo json_encode($response);
-    exit();
+    return json_encode($response);
 }
