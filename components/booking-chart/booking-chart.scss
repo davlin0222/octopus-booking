@@ -1,8 +1,14 @@
+$available: #0daf38;
+$booking: #b11d1d;
+$selected: #3260df;
+$user-booking: #761db1;
+
 .booking-chart {
     border-collapse: collapse;
     table-layout: fixed;
     width: 420px;
     background: #181c1c;
+    user-select: none;
 
     &__row {
         height: 1rem;
@@ -15,8 +21,20 @@
         padding: 5px 0;
         text-align: center;
         overflow: hidden;
-        &:last-child {
-            border-right: 1px solid #4e5d5d;
+    }
+
+    &__booking-cell {
+        cursor: pointer;
+        background: $available;
+
+        &:active {
+            background: darken($available, 1%);
+        }
+
+        &--available {
+            &:hover {
+                background: lighten($available, 3%);
+            }
         }
     }
 }

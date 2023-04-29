@@ -62,6 +62,7 @@ function createTimeHeaderCell(hour) {
 function createBookingCell(hour, room) {
     const bookingCell = document.createElement('td')
     bookingCell.classList.add('booking-chart__booking-cell')
+    bookingCell.classList.add('booking-chart__booking-cell--available')
 
     bookingCell.dataset.roomId = room.id
     bookingCell.dataset.hour = hour
