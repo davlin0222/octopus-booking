@@ -20,13 +20,20 @@ function createUser($email, $password, $first_name, $last_name, $phone_number, $
     executeQuery($query, "ssssss", [$email, $first_name, $last_name, $password_hash, $phone_number, $role_id]);
 }
 
+/**
+ * Verifies user credentials by querying the database with the provided email and comparing the password hash
+ * 
+ * @param string $email The email address associated with the user account
+ * @param string $password The plaintext password to verify
+ * @return array|bool An array with two elements [success(boolean), user(array)], or false if credentials are invalid
+ */
 function verifyUserCredentials($email, $password)
 {
     $query = "SELECT user_id, email, password_hash, role_id FROM users WHERE email = ?";
     $result = executeQuery($query, "s", [$email]);
 
     $databaseUser = mysqli_fetch_assoc($result);
-    if (!$databaseUser) return false;
+    if (!$databaseUser) return [false];
     $password_hash = $databaseUser["password_hash"];
 
     $responseUser = [
@@ -39,5 +46,5 @@ function verifyUserCredentials($email, $password)
     if (password_verify($password, $password_hash)) return [true, $responseUser]; // credentials are valid
 
     // If the query did not return a result or the password is invalid
-    return false; // credentials are invalid
+    return [false]; // credentials are invalid
 }
