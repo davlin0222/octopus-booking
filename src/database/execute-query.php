@@ -11,15 +11,34 @@
  */
 function executeQuery($query, $paramString, $params = null)
 {
+    // Check if a query was provided
+    if (empty($query)) {
+        throw new InvalidArgumentException('Query must be provided');
+    }
+
+    // Check if a parameter string was provided
+    if (empty($paramString)) {
+        throw new InvalidArgumentException('Parameter string must be provided');
+    }
+
     // Establish a database connection
     require("connection.php");
 
     // Prepare the query and bind the parameters
     $stmt = $connection->prepare($query);
+
+    // Check if the statement could be prepared
+    if (!$stmt) {
+        throw new RuntimeException('Failed to prepare statement: ' . $connection->error);
+    }
+
+    // Bind the parameters
     $stmt->bind_param($paramString, ...$params);
 
     // Execute the query and get the result
-    $stmt->execute();
+    if (!$stmt->execute()) {
+        throw new RuntimeException('Failed to execute query: ' . $stmt->error);
+    }
     $result = $stmt->get_result();
 
     // Close the statement and connection

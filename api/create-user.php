@@ -15,5 +15,17 @@ $firstName = $requestBody['firstName'] ?? '';
 $lastName = $requestBody['lastName'] ?? '';
 $phoneNumber = $requestBody['phoneNumber'] ?? '';
 
-// create the user with the extracted data
-createUser($email, $password, $firstName, $lastName, $phoneNumber, $EMPLOYEE_ROLE_ID);
+try {
+    // create the user with the extracted data
+    createUser($email, $password, $firstName, $lastName, $phoneNumber, $EMPLOYEE_ROLE_ID);
+    $response = [
+        "success" => true
+    ];
+    echo json_encode($response);
+} catch (\Throwable $th) {
+    $response = [
+        "success" => false,
+        "errorMessage" => $th
+    ];
+    echo json_encode($response);
+}
