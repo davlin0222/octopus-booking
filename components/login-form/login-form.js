@@ -1,10 +1,15 @@
-import { login } from '../../services/login.js'
+import { login } from './login.js'
 
 const loginForm = document.querySelector('#login-form')
 loginForm.addEventListener('submit', loginForm_onSubmit)
 
-function loginForm_onSubmit(e) {
+async function loginForm_onSubmit(e) {
     e.preventDefault()
 
-    login()
+    const form = e.target
+    const email = form.email.value
+    const password = form.password.value
+
+    const success = await login(email, password)
+    console.log(`loginForm_onSubmit  success:`, success)
 }
