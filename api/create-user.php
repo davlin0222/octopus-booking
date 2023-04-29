@@ -4,6 +4,9 @@ require("../src/users.php");
 require("../src/api-response.php");
 require("../src/error-handler.php");
 require("../src/constants.php");
+require("../src/authorization.php");
+
+authorize("isAdmin");
 
 // get the request body as JSON and decode it
 $requestBody = json_decode(file_get_contents('php://input'), true);
