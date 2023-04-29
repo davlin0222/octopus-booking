@@ -1,10 +1,13 @@
 <?php
 
-function authorize()
+class Authorize
 {
-    session_start();
-    if (!$_SESSION["isAdmin"]) {
-        echo jsonResponse(false, ["message" => "logged in user is not admin"]);
-        exit();
+    public static function isAdmin()
+    {
+        session_start();
+        if (!$_SESSION["isAdmin"]) {
+            return jsonResponse(false, ["message" => "logged in user is not admin"]);
+            exit();
+        }
     }
 }
