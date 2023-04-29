@@ -20,8 +20,8 @@ $phoneNumber = $requestBody['phoneNumber'];
 try {
     // create the user with the extracted data
     createUser($email, $password, $firstName, $lastName, $phoneNumber, $EMPLOYEE_ROLE_ID);
-    echo response(true);
+    echo jsonResponse(true);
 } catch (\Throwable $exception) {
-    echo errorResponse($exception);
+    echo JsonErrorResponse($exception);
     exit();
 }

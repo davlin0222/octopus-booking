@@ -1,6 +1,6 @@
 <?php
 
-function response($success, $data = null)
+function jsonResponse($success, $data = null)
 {
     if (!$data) {
         $response = [

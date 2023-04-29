@@ -2,11 +2,11 @@
 
 set_error_handler(function ($errorNumber, $errorString, $errorFile, $errorLine) {
     $exception = new ErrorException($errorString, 0, $errorNumber, $errorFile, $errorLine);
-    echo errorResponse($exception);
+    echo JsonErrorResponse($exception);
     exit();
 });
 
-function errorResponse($exception)
+function JsonErrorResponse($exception)
 {
     $response = [
         "success" => false,
