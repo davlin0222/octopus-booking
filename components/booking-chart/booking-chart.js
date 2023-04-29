@@ -1,4 +1,6 @@
-const rooms = [{ id: 1 }, { id: 2 }, { id: 3 }]
+import { fetchRooms } from './rooms.js'
+
+const rooms = await fetchRooms()
 
 const header = createHeader(rooms)
 
