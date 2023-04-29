@@ -1,5 +1,4 @@
 <?php
 
-require("src/rooms.php");
-$roomNames = getRoomNames();
-echo json_encode($roomNames);
+require("src/redirect.php");
+redirect("pages/main-page.php");
