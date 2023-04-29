@@ -3,6 +3,7 @@
 set_error_handler(function ($errorNumber, $errorString, $errorFile, $errorLine) {
     $exception = new ErrorException($errorString, 0, $errorNumber, $errorFile, $errorLine);
     echo errorResponse($exception);
+    exit();
 });
 
 function errorResponse($exception)
