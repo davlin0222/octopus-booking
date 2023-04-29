@@ -4,6 +4,10 @@
     width: 420px;
     background: #181c1c;
 
+    &__row {
+        height: 1rem;
+    }
+
     &__header-cell,
     &__row-header-cell,
     &__booking-cell {

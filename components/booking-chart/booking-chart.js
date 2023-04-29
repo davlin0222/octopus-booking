@@ -1,13 +1,16 @@
 import { fetchRooms } from './rooms.js'
+// import { fetchBookings } from './bookings.js'
 
 const rooms = await fetchRooms()
 
-const header = createHeader(rooms)
+const tableHeader = createTableHeader(rooms)
+const tableBody = createTableBody(rooms, 6, 22)
 
 const bookingChart = document.querySelector('#booking-chart')
-bookingChart.appendChild(header)
+bookingChart.appendChild(tableHeader)
+bookingChart.appendChild(tableBody)
 
-function createHeader(rooms) {
+function createTableHeader(rooms) {
     const timeHeaderCell = document.createElement('th')
     timeHeaderCell.classList.add('booking-chart__header-cell')
 
@@ -18,8 +21,24 @@ function createHeader(rooms) {
         return headerCell
     })
 
-    const header = document.createElement('thead')
-    header.appendChild(timeHeaderCell)
-    headerCells.forEach((headerCell) => header.appendChild(headerCell))
-    return header
+    const tableHeader = document.createElement('thead')
+    tableHeader.appendChild(timeHeaderCell)
+    headerCells.forEach((headerCell) => tableHeader.appendChild(headerCell))
+    return tableHeader
+}
+
+function createTableBody(rooms, firstHour, lastHour) {
+    const tableBody = document.createElement('tbody')
+
+    for (let hour = firstHour; hour <= lastHour; hour++) {
+        const row = createRow(hour, rooms)
+        tableBody.appendChild(row)
+    }
+    return tableBody
+}
+
+function createRow(hour, rooms) {
+    const row = document.createElement('tr')
+    row.classList.add('booking-chart__row')
+    return row
 }

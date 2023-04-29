@@ -4,6 +4,9 @@
   width: 420px;
   background: #181c1c;
 }
+.booking-chart__row {
+  height: 1rem;
+}
 .booking-chart__header-cell, .booking-chart__row-header-cell, .booking-chart__booking-cell {
   border: 1px solid #4e5d5d;
   padding: 5px 0;
