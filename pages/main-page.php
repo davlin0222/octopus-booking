@@ -1,3 +1,12 @@
+<?php
+require("../src/authorization.php");
+require("../src/redirect.php");
+
+Authorize::isLoggedIn(function () {
+    redirect("login.php");
+});
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
