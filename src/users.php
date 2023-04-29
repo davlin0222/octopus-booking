@@ -17,6 +17,5 @@ function createUser($email, $password, $first_name, $last_name, $phone_number, $
 {
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
     $query = "INSERT INTO users (email, first_name, last_name, password_hash, phone_number, role_id) VALUES (?, ?, ?, ?, ?, ?)";
-    executeQuery($query, [$email, $first_name, $last_name, $password_hash, $phone_number, $role_id]);
-    // executeQuery($query, "ssssss", [$email, $first_name, $last_name, $password_hash, $phone_number, $role_id]);
+    executeQuery($query, "ssssss", [$email, $first_name, $last_name, $password_hash, $phone_number, $role_id]);
 }

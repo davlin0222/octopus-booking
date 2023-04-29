@@ -1,15 +1,10 @@
 <?php
 
-function executeQuery($query, $params = null)
+function executeQuery($query, $paramString, $params = null)
 {
     require("connection.php");
-
     $stmt = $connection->prepare($query);
-
-    if ($params) {
-        $stmt->bind_param(str_repeat("s", count($params)), ...$params);
-    }
-
+    $stmt->bind_param($paramString, ...$params);
     $stmt->execute();
     $result = $stmt->get_result();
     $stmt->close();
