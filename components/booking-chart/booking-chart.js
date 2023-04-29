@@ -40,5 +40,31 @@ function createTableBody(rooms, firstHour, lastHour) {
 function createRow(hour, rooms) {
     const row = document.createElement('tr')
     row.classList.add('booking-chart__row')
+    row.appendChild(createTimeHeaderCell(hour))
+    rooms.forEach((room) => {
+        const bookingCell = createBookingCell(hour, room)
+        row.appendChild(bookingCell)
+    })
     return row
+}
+
+function createTimeHeaderCell(hour) {
+    const timeHeaderCell = document.createElement('td')
+    timeHeaderCell.classList.add('booking-chart__row-header-cell')
+    timeHeaderCell.innerText = hour
+    // const formattedHour = convertHourToClockTime(rowHour)
+    // const formattedNextHour = convertHourToClockTime(rowHour + 1)
+    // timeHeaderCell.innerText = formattedHour
+    // timeHeaderCell.title = `${formattedHour}-${formattedNextHour}`
+    return timeHeaderCell
+}
+
+function createBookingCell(hour, room) {
+    const bookingCell = document.createElement('td')
+    bookingCell.classList.add('booking-chart__booking-cell')
+
+    bookingCell.dataset.roomId = room.id
+    bookingCell.dataset.hour = hour
+
+    return bookingCell
 }
