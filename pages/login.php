@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/dist/main.css">
+    <link rel="stylesheet" href="../assets/css/dist/login-form.css">
     <script src="../components/login-form/login-form.js" defer type="module"></script>
     <title>Octopus Booking - Login</title>
 </head>

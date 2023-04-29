@@ -19,7 +19,9 @@ Authorize::isLoggedIn(function () {
 </head>
 
 <body>
-    <h1>Octopus Booking</h1>
+    <div class="page">
+        <h1 class="heading">Octopus Booking</h1>
+    </div>
 </body>
 
 </html>
