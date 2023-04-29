@@ -19,3 +19,19 @@ function createUser($email, $password, $first_name, $last_name, $phone_number, $
     $query = "INSERT INTO users (email, first_name, last_name, password_hash, phone_number, role_id) VALUES (?, ?, ?, ?, ?, ?)";
     executeQuery($query, "ssssss", [$email, $first_name, $last_name, $password_hash, $phone_number, $role_id]);
 }
+
+function verifyUserCredentials($email, $password)
+{
+    $query = "SELECT password_hash FROM users WHERE email = ?";
+    $result = executeQuery($query, "s", [$email]);
+
+    $user = mysqli_fetch_assoc($result);
+    if (!$user) return false;
+    $password_hash = $user["password_hash"];
+
+    // If the query returned a result, verify the password hash
+    if (password_verify($password, $password_hash)) return true; // credentials are valid
+
+    // If the query did not return a result or the password is invalid
+    return false; // credentials are invalid
+}

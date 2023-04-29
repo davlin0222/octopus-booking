@@ -7,7 +7,6 @@ require("../src/error-handler.php");
 // define the employee role ID
 $EMPLOYEE_ROLE_ID = 1;
 
-
 // get the request body as JSON and decode it
 $requestBody = json_decode(file_get_contents('php://input'), true);
 
@@ -24,4 +23,5 @@ try {
     echo response(true);
 } catch (\Throwable $exception) {
     echo errorResponse($exception);
+    exit();
 }
