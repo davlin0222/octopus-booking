@@ -2,4 +2,14 @@
   border-collapse: collapse;
   table-layout: fixed;
   width: 420px;
+  background: #181c1c;
+}
+.booking-chart__header-cell, .booking-chart__row-header-cell, .booking-chart__booking-cell {
+  border: 1px solid #4e5d5d;
+  padding: 5px 0;
+  text-align: center;
+  overflow: hidden;
+}
+.booking-chart__header-cell:last-child, .booking-chart__row-header-cell:last-child, .booking-chart__booking-cell:last-child {
+  border-right: 1px solid #4e5d5d;
 }/*# sourceMappingURL=booking-chart.css.map */
