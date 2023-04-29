@@ -5,14 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../components/login-form/login-form.js"></script>
+    <link rel="stylesheet" href="../assets/css/dist/main.css">
+    <link rel="stylesheet" href="../assets/css/dist/login-form.css">
+    <script src="../components/login-form/login-form.js" defer type="module"></script>
     <title>Octopus Booking - Login</title>
 </head>
 
 <body>
-    <h1>Octopus Booking - Login</h1>
+    <div class="page">
 
-    <?php require("../components/login-form/login-form.php") ?>
+        <h1 class="heading">Octopus Booking - Login</h1>
+
+        <?php include("../components/login-form/login-form.php") ?>
+    </div>
 </body>
 
 </html>

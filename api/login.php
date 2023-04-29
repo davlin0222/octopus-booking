@@ -8,9 +8,9 @@ require("../src/constants.php");
 // get the request body as JSON and decode it
 $requestBody = json_decode(file_get_contents('php://input'), true);
 
-// extract the user data from the request body
-$email = $requestBody['email'];
-$password = $requestBody['password'];
+// sanitize user input
+$email = filter_var($requestBody['email'], FILTER_SANITIZE_EMAIL);
+$password = filter_var($requestBody['password'], FILTER_SANITIZE_SPECIAL_CHARS);
 
 [$isAuthenticated, $user] = verifyUserCredentials($email, $password);
 

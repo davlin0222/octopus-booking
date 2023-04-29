@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: #121212;
+  color: #eee;
+}
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.page {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  padding: 2rem;
+}
+
+.heading {
+  margin-bottom: 1rem;
+}/*# sourceMappingURL=main.css.map */

@@ -13,12 +13,12 @@ Authorize::isAdmin(function () {
 // get the request body as JSON and decode it
 $requestBody = json_decode(file_get_contents('php://input'), true);
 
-// extract the user data from the request body
-$email = $requestBody['email'];
-$password = $requestBody['password'];
-$firstName = $requestBody['firstName'];
-$lastName = $requestBody['lastName'];
-$phoneNumber = $requestBody['phoneNumber'];
+// sanitize user input
+$email = filter_var($requestBody['email'], FILTER_SANITIZE_EMAIL);
+$password = filter_var($requestBody['password'], FILTER_SANITIZE_SPECIAL_CHARS);
+$firstName = filter_var($requestBody['firstName'], FILTER_SANITIZE_SPECIAL_CHARS);
+$lastName = filter_var($requestBody['lastName'], FILTER_SANITIZE_SPECIAL_CHARS);
+$phoneNumber = filter_var($requestBody['phoneNumber'], FILTER_SANITIZE_SPECIAL_CHARS);
 
 try {
     // create the user with the extracted data
