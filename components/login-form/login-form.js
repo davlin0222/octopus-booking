@@ -12,4 +12,8 @@ async function loginForm_onSubmit(e) {
 
     const success = await login(email, password)
     console.log(`loginForm_onSubmit  success:`, success)
+
+    if (success) {
+        window.location.href = '../index.php'
+    }
 }
