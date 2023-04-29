@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: application/json');
+
 set_error_handler(function ($errorNumber, $errorString, $errorFile, $errorLine) {
     $exception = new ErrorException($errorString, 0, $errorNumber, $errorFile, $errorLine);
     echo JsonErrorResponse($exception);

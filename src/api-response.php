@@ -1,5 +1,7 @@
 <?php
 
+header('Content-Type: application/json');
+
 function jsonResponse($success, $data = null)
 {
     if (!$data) {
