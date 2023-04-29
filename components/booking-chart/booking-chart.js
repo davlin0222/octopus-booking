@@ -1,3 +1,4 @@
+import { convertHourToClockTime } from './time-utils.js'
 import { fetchRooms } from './rooms.js'
 // import { fetchBookings } from './bookings.js'
 
@@ -48,14 +49,13 @@ function createRow(hour, rooms) {
     return row
 }
 
-function createTimeHeaderCell(hour) {
+function createTimeHeaderCell(rowHour) {
     const timeHeaderCell = document.createElement('td')
     timeHeaderCell.classList.add('booking-chart__row-header-cell')
-    timeHeaderCell.innerText = hour
-    // const formattedHour = convertHourToClockTime(rowHour)
-    // const formattedNextHour = convertHourToClockTime(rowHour + 1)
-    // timeHeaderCell.innerText = formattedHour
-    // timeHeaderCell.title = `${formattedHour}-${formattedNextHour}`
+    const formattedHour = convertHourToClockTime(rowHour)
+    const formattedNextHour = convertHourToClockTime(rowHour + 1)
+    timeHeaderCell.innerText = formattedHour
+    timeHeaderCell.title = `${formattedHour}-${formattedNextHour}`
     return timeHeaderCell
 }
 

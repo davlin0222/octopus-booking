@@ -2,6 +2,7 @@
   border-collapse: collapse;
   table-layout: fixed;
   width: 420px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: #181c1c;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -15,6 +16,9 @@
   padding: 5px 0;
   text-align: center;
   overflow: hidden;
+}
+.booking-chart__header-cell:first-child {
+  width: 45px;
 }
 .booking-chart__booking-cell {
   cursor: pointer;

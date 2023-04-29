@@ -7,6 +7,8 @@ $user-booking: #761db1;
     border-collapse: collapse;
     table-layout: fixed;
     width: 420px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     background: #181c1c;
     user-select: none;
 
@@ -21,6 +23,12 @@ $user-booking: #761db1;
         padding: 5px 0;
         text-align: center;
         overflow: hidden;
+    }
+
+    &__header-cell {
+        &:first-child {
+            width: 45px;
+        }
     }
 
     &__booking-cell {
