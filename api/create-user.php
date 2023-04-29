@@ -6,7 +6,9 @@ require("../src/error-handler.php");
 require("../src/constants.php");
 require("../src/authorization.php");
 
-Authorize::isAdmin();
+Authorize::isAdmin(function () {
+    echo jsonResponse(false, ["message" => "logged in user is not admin"]);
+});
 
 // get the request body as JSON and decode it
 $requestBody = json_decode(file_get_contents('php://input'), true);

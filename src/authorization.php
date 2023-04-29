@@ -2,11 +2,19 @@
 
 class Authorize
 {
-    public static function isAdmin()
+    public static function isAdmin($callback)
     {
         session_start();
         if (!$_SESSION["isAdmin"]) {
-            return jsonResponse(false, ["message" => "logged in user is not admin"]);
+            return $callback();
+            exit();
+        }
+    }
+    public static function isLoggedIn($callback)
+    {
+        session_start();
+        if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
+            return $callback();
             exit();
         }
     }
