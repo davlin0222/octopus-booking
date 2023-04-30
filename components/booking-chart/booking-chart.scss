@@ -1,0 +1,57 @@
+$available: #0daf38;
+$booking: #b11d1d;
+$selected: #3260df;
+$user-booking: #761db1;
+
+.booking-chart {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 420px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background: #181c1c;
+    user-select: none;
+
+    &__row {
+        height: 1rem;
+    }
+
+    &__header-cell,
+    &__row-header-cell,
+    &__booking-cell {
+        border: 1px solid #4e5d5d;
+        padding: 5px 0;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    &__header-cell {
+        &:first-child {
+            width: 45px;
+        }
+    }
+
+    &__booking-cell {
+        cursor: pointer;
+        background: $available;
+
+        &:active {
+            background: darken($available, 1%);
+        }
+
+        &--available {
+            &:hover {
+                background: lighten($available, 3%);
+            }
+        }
+        &--selected {
+            background: $selected;
+            &:hover {
+                background: lighten($selected, 3%);
+            }
+            &:active {
+                background: darken($selected, 1%);
+            }
+        }
+    }
+}

@@ -15,12 +15,16 @@ Authorize::isLoggedIn(function () {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/dist/main.css">
+    <link rel="stylesheet" href="../assets/css/dist/booking-chart.css">
+    <script src="../components/booking-chart/booking-chart.js" defer type="module"></script>
     <title>Octopus Booking</title>
 </head>
 
 <body>
     <div class="page">
         <h1 class="heading">Octopus Booking</h1>
+
+        <?php include("../components/booking-chart/booking-chart.php") ?>
     </div>
 </body>
 
