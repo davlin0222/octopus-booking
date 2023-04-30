@@ -29,4 +29,13 @@
 }
 .booking-chart__booking-cell--available:hover {
   background: #0ebd3d;
+}
+.booking-chart__booking-cell--selected {
+  background: #3260df;
+}
+.booking-chart__booking-cell--selected:hover {
+  background: #3f6ae1;
+}
+.booking-chart__booking-cell--selected:active {
+  background: #2e5dde;
 }/*# sourceMappingURL=booking-chart.css.map */

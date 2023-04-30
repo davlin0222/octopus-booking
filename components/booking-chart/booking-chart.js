@@ -1,6 +1,12 @@
-import { convertHourToClockTime } from './time-utils.js'
+import { clockFormatHour } from './time-utils.js'
 import { fetchRooms } from './rooms.js'
 // import { fetchBookings } from './bookings.js'
+
+const state = { mouseDown: false }
+document.addEventListener('mouseup', () => {
+    console.log(`document.addEventListener  mouseup`)
+    state.mouseDown = false
+})
 
 const rooms = await fetchRooms()
 
@@ -31,19 +37,19 @@ function createTableHeader(rooms) {
 function createTableBody(rooms, firstHour, lastHour) {
     const tableBody = document.createElement('tbody')
 
-    for (let hour = firstHour; hour <= lastHour; hour++) {
-        const row = createRow(hour, rooms)
+    for (let rowHour = firstHour; rowHour <= lastHour; rowHour++) {
+        const row = createRow(rowHour, rooms)
         tableBody.appendChild(row)
     }
     return tableBody
 }
 
-function createRow(hour, rooms) {
+function createRow(rowHour, rooms) {
     const row = document.createElement('tr')
     row.classList.add('booking-chart__row')
-    row.appendChild(createTimeHeaderCell(hour))
+    row.appendChild(createTimeHeaderCell(rowHour))
     rooms.forEach((room) => {
-        const bookingCell = createBookingCell(hour, room)
+        const bookingCell = createBookingCell(rowHour, room)
         row.appendChild(bookingCell)
     })
     return row
@@ -52,8 +58,8 @@ function createRow(hour, rooms) {
 function createTimeHeaderCell(rowHour) {
     const timeHeaderCell = document.createElement('td')
     timeHeaderCell.classList.add('booking-chart__row-header-cell')
-    const formattedHour = convertHourToClockTime(rowHour)
-    const formattedNextHour = convertHourToClockTime(rowHour + 1)
+    const formattedHour = clockFormatHour(rowHour)
+    const formattedNextHour = clockFormatHour(rowHour + 1)
     timeHeaderCell.innerText = formattedHour
     timeHeaderCell.title = `${formattedHour}-${formattedNextHour}`
     return timeHeaderCell
@@ -67,5 +73,21 @@ function createBookingCell(hour, room) {
     bookingCell.dataset.roomId = room.id
     bookingCell.dataset.hour = hour
 
+    bookingCell.addEventListener('mousedown', bookingCell_onMouseDown)
+    bookingCell.addEventListener('mouseover', bookingCell_onMouseOver)
+
     return bookingCell
+}
+
+function bookingCell_onMouseDown(e) {
+    state.mouseDown = true
+    toggleCellSelect(e.target)
+}
+function bookingCell_onMouseOver(e) {
+    if (state.mouseDown) toggleCellSelect(e.target)
+}
+
+function toggleCellSelect(bookingCell) {
+    bookingCell.classList.toggle('booking-chart__booking-cell--available')
+    bookingCell.classList.toggle('booking-chart__booking-cell--selected')
 }

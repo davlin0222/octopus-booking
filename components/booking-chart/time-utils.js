@@ -3,6 +3,6 @@ export const ensureTwoDigit = (number) => {
     return numberString.length == 1 ? '0' + numberString : numberString
 }
 
-export const convertHourToClockTime = (hour) => {
+export const clockFormatHour = (hour) => {
     return ensureTwoDigit(hour) + ':00'
 }

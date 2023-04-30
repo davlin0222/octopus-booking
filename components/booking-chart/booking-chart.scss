@@ -44,5 +44,14 @@ $user-booking: #761db1;
                 background: lighten($available, 3%);
             }
         }
+        &--selected {
+            background: $selected;
+            &:hover {
+                background: lighten($selected, 3%);
+            }
+            &:active {
+                background: darken($selected, 1%);
+            }
+        }
     }
 }
