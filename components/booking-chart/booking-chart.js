@@ -1,10 +1,9 @@
-import { clockFormatHour } from './time-utils.js'
+import { clockFormatHour, formatHourDuration } from './time-utils.js'
 import { fetchRooms } from './rooms.js'
 // import { fetchBookings } from './bookings.js'
 
 const state = { mouseDown: false }
 document.addEventListener('mouseup', () => {
-    console.log(`document.addEventListener  mouseup`)
     state.mouseDown = false
 })
 
@@ -59,9 +58,9 @@ function createTimeHeaderCell(rowHour) {
     const timeHeaderCell = document.createElement('td')
     timeHeaderCell.classList.add('booking-chart__row-header-cell')
     const formattedHour = clockFormatHour(rowHour)
-    const formattedNextHour = clockFormatHour(rowHour + 1)
+    const formattedHourDuration = formatHourDuration(rowHour)
     timeHeaderCell.innerText = formattedHour
-    timeHeaderCell.title = `${formattedHour}-${formattedNextHour}`
+    timeHeaderCell.title = formattedHourDuration
     return timeHeaderCell
 }
 
@@ -72,6 +71,9 @@ function createBookingCell(hour, room) {
 
     bookingCell.dataset.roomId = room.id
     bookingCell.dataset.hour = hour
+
+    const formattedClock = formatHourDuration(hour)
+    bookingCell.title = `Room ${room.id}\n${formattedClock}`
 
     bookingCell.addEventListener('mousedown', bookingCell_onMouseDown)
     bookingCell.addEventListener('mouseover', bookingCell_onMouseOver)
