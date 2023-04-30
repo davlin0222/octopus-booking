@@ -4,7 +4,6 @@ import { fetchRooms } from './rooms.js'
 
 const state = { mouseDown: false }
 document.addEventListener('mouseup', () => {
-    console.log(`document.addEventListener  mouseup`)
     state.mouseDown = false
 })
 
@@ -65,6 +64,12 @@ function createTimeHeaderCell(rowHour) {
     return timeHeaderCell
 }
 
+function formatClock(hour) {
+    const formattedHour = clockFormatHour(hour)
+    const formattedNextHour = clockFormatHour(hour + 1)
+    return `${formattedHour}-${formattedNextHour}`
+}
+
 function createBookingCell(hour, room) {
     const bookingCell = document.createElement('td')
     bookingCell.classList.add('booking-chart__booking-cell')
@@ -72,6 +77,9 @@ function createBookingCell(hour, room) {
 
     bookingCell.dataset.roomId = room.id
     bookingCell.dataset.hour = hour
+
+    const formattedClock = formatClock(hour)
+    bookingCell.title = `Room ${room.id}\n${formattedClock}`
 
     bookingCell.addEventListener('mousedown', bookingCell_onMouseDown)
     bookingCell.addEventListener('mouseover', bookingCell_onMouseOver)
