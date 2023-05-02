@@ -1,7 +1,4 @@
-$available: #0daf38;
-$booking: #b11d1d;
-$selected: #3260df;
-$user-booking: #761db1;
+@use "../../assets/css/colors";
 
 .booking-chart {
     border-collapse: collapse;
@@ -33,24 +30,24 @@ $user-booking: #761db1;
 
     &__booking-cell {
         cursor: pointer;
-        background: $available;
+        background: colors.$available;
 
         &:active {
-            background: darken($available, 1%);
+            background: darken(colors.$available, 1%);
         }
 
         &--available {
             &:hover {
-                background: lighten($available, 3%);
+                background: lighten(colors.$available, 3%);
             }
         }
         &--selected {
-            background: $selected;
+            background: colors.$selected;
             &:hover {
-                background: lighten($selected, 3%);
+                background: lighten(colors.$selected, 3%);
             }
             &:active {
-                background: darken($selected, 1%);
+                background: darken(colors.$selected, 1%);
             }
         }
     }

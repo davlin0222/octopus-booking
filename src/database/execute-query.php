@@ -40,11 +40,12 @@ function executeQuery($query, $paramString, $params = null)
         throw new RuntimeException('Failed to execute query: ' . $stmt->error);
     }
     $result = $stmt->get_result();
+    $insertId = mysqli_insert_id($connection);
 
     // Close the statement and connection
     $stmt->close();
     $connection->close();
 
     // Return the query result
-    return $result;
+    return [$result, $insertId];
 }
