@@ -10,8 +10,9 @@ async function createBookings(selectedBookings) {
             },
         })
 
-        const { success, data } = await response.json()
-        console.log(`createBookings  data:`, data)
+        const text = await response.text()
+        console.log(`login  text:`, text)
+        const { success } = JSON.parse(text)
         return success
     } catch (error) {
         console.error(error)

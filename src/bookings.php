@@ -10,9 +10,10 @@ function createBookings($bookings)
 
     $query = "INSERT INTO bookings (user_id) values (?)";
     [$result, $bookingId] = executeQuery($query, "s", [$userId]);
-
+    echo $bookingId;
     $query = "INSERT INTO booking_times (booking_id) values (?)";
     [$result, $bookingId] = executeQuery($query, "s", [$bookingId]);
+    echo $bookingId;
 
     return $bookingId;
 }
