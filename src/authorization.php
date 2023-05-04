@@ -10,11 +10,11 @@ class Authorize
             exit();
         }
     }
-    public static function isLoggedIn($callback)
+    public static function isLoggedIn($callbackIfNotLoggedIn)
     {
         session_start();
         if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
-            return $callback();
+            return $callbackIfNotLoggedIn();
             exit();
         }
     }
