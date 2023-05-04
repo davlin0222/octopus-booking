@@ -8,11 +8,14 @@ async function login(email, password) {
             },
         })
 
-        const { success } = await response.json()
+        const text = await response.text()
+        console.log(`login  text:`, text)
+        const { success } = JSON.parse(text)
         return success
     } catch (error) {
         console.error(error)
         return false
     }
 }
+
 export { login }

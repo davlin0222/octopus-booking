@@ -30,7 +30,7 @@ function createUser($email, $password, $first_name, $last_name, $phone_number, $
 function verifyUserCredentials($email, $password)
 {
     $query = "SELECT user_id, email, password_hash, role_id FROM users WHERE email = ?";
-    $result = executeQuery($query, "s", [$email]);
+    [$result] = executeQuery($query, "s", [$email]);
 
     $databaseUser = mysqli_fetch_assoc($result);
     if (!$databaseUser) return [false];
