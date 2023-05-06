@@ -116,11 +116,15 @@ function toggleCellSelect(bookingCell) {
     updateSelectionState()
     console.log(`toggleCellSelect  state.isCancelBookings:`, state.isCancelBookings)
 
-    // if (state.isCancelBookings) {
-    //     document.querySelector('.booking-form__submit').style.display = 'none'
-    //     return
-    // }
-    // document.querySelector('.booking-form__submit').style.display = 'block'
+    if (state.isCancelBookings) {
+        document.querySelector('.booking-form__submit._book').classList.add('_hidden')
+        document
+            .querySelector('.booking-form__submit._cancel')
+            .classList.remove('_hidden')
+        return
+    }
+    document.querySelector('.booking-form__submit._book').classList.remove('_hidden')
+    document.querySelector('.booking-form__submit._cancel').classList.add('_hidden')
 }
 
 function foo(bookingCell) {
