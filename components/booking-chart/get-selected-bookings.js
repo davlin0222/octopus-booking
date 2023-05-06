@@ -1,6 +1,6 @@
 function getSelectedBookings() {
     const selectedBookingCells = Array.from(
-        document.querySelectorAll('.booking-chart__booking-cell--selected')
+        document.querySelectorAll('.booking-chart__booking-cell._selected')
     )
 
     const selectedBookings = selectedBookingCells.map((bookingCell) => {
