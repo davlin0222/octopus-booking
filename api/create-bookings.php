@@ -4,7 +4,6 @@ require("../src/authorization.php");
 require("../src/bookings.php");
 require("../src/api-response.php");
 require("../src/error-handler.php");
-require("../src/database/execute-query.php");
 
 Authorize::isLoggedIn(function () {
     echo jsonResponse(

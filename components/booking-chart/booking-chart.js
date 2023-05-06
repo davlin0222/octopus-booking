@@ -1,6 +1,6 @@
 import { clockFormatHour, formatHourDuration } from './time-utils.js'
 import { fetchRooms } from './rooms.js'
-// import { fetchBookings } from './bookings.js'
+import { fetchBookings } from '../../assets/js/bookings.js'
 
 const state = { mouseDown: false }
 document.addEventListener('mouseup', () => {
@@ -8,9 +8,10 @@ document.addEventListener('mouseup', () => {
 })
 
 const rooms = await fetchRooms()
+const bookings = await fetchBookings()
 
 const tableHeader = createTableHeader(rooms)
-const tableBody = createTableBody(rooms, 6, 22)
+const tableBody = createTableBody({ rooms, firstHour: 6, lastHour: 22, bookings })
 
 const bookingChart = document.querySelector('#booking-chart')
 bookingChart.appendChild(tableHeader)
@@ -33,22 +34,24 @@ function createTableHeader(rooms) {
     return tableHeader
 }
 
-function createTableBody(rooms, firstHour, lastHour) {
+function createTableBody({ rooms, firstHour, lastHour, bookings }) {
     const tableBody = document.createElement('tbody')
 
     for (let rowHour = firstHour; rowHour <= lastHour; rowHour++) {
-        const row = createRow(rowHour, rooms)
+        const row = createRow(rowHour, rooms, bookings)
         tableBody.appendChild(row)
     }
     return tableBody
 }
 
-function createRow(rowHour, rooms) {
+function createRow(rowHour, rooms, bookings) {
+    const bookingsOnThisRow = bookings.filter((booking) => booking.hour == rowHour)
+
     const row = document.createElement('tr')
     row.classList.add('booking-chart__row')
     row.appendChild(createTimeHeaderCell(rowHour))
     rooms.forEach((room) => {
-        const bookingCell = createBookingCell(rowHour, room)
+        const bookingCell = createBookingCell(rowHour, room, bookingsOnThisRow)
         row.appendChild(bookingCell)
     })
     return row
@@ -64,10 +67,17 @@ function createTimeHeaderCell(rowHour) {
     return timeHeaderCell
 }
 
-function createBookingCell(hour, room) {
+function createBookingCell(hour, room, bookingsOnThisRow) {
     const bookingCell = document.createElement('td')
     bookingCell.classList.add('booking-chart__booking-cell')
     bookingCell.classList.add('booking-chart__booking-cell--available')
+
+    const thisBooking = bookingsOnThisRow.find((booking) => booking.roomId == room.id)
+
+    if (thisBooking) {
+        bookingCell.classList.add('booking-chart__booking-cell--booking')
+        bookingCell.classList.remove('booking-chart__booking-cell--available')
+    }
 
     bookingCell.dataset.roomId = room.id
     bookingCell.dataset.hour = hour

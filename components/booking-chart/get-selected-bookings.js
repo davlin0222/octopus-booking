@@ -4,10 +4,10 @@ function getSelectedBookings() {
     )
 
     const selectedBookings = selectedBookingCells.map((bookingCell) => {
-        const hour = bookingCell.dataset.hour
         const roomId = bookingCell.dataset.roomId
+        const hour = bookingCell.dataset.hour
 
-        return { hour, roomId }
+        return { roomId, hour }
     })
     return selectedBookings
 }
