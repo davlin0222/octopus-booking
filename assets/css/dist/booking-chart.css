@@ -47,4 +47,13 @@
 }
 .booking-chart__booking-cell--booking:active {
   background: #ad1c1c;
+}
+.booking-chart__booking-cell--user-booking {
+  background: #761db1;
+}
+.booking-chart__booking-cell--user-booking:hover {
+  background: #7f1fbe;
+}
+.booking-chart__booking-cell--user-booking:active {
+  background: #731cad;
 }/*# sourceMappingURL=booking-chart.css.map */

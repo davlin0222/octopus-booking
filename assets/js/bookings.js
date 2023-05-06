@@ -5,10 +5,19 @@ async function fetchBookings(dateString) {
         const text = await response.text()
         // console.log(`login  text:`, text)
         const { success, data } = JSON.parse(text)
+        console.log(`fetchBookings  data.userId:`, data.userId)
 
         if (!success) return
 
-        return data.bookings
+        const bookings = data.bookings.map((booking) => {
+            if (booking.userId == data.userId) {
+                return { ...booking, isUserBooking: true }
+            }
+
+            return booking
+        })
+
+        return bookings
     } catch (error) {
         console.error(error)
         return null

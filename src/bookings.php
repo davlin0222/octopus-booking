@@ -19,7 +19,11 @@ function createBookings($bookings, $date)
 
 function getBookings($dateString)
 {
-    $query = "SELECT hour, room_id FROM booking_times WHERE date = ?";
+    $query =
+        "SELECT bt.hour, bt.room_id, b.user_id
+        FROM booking_times bt
+        INNER JOIN bookings b ON b.booking_id = bt.booking_id
+        WHERE bt.date = ?";
     [$result] = executeQuery($query, "s", [$dateString]);
 
     $bookings = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -28,6 +32,7 @@ function getBookings($dateString)
         return [
             "hour" => $booking["hour"],
             "roomId" => $booking["room_id"],
+            "userId" => $booking["user_id"],
         ];
     }, $bookings);
 

@@ -59,5 +59,14 @@
                 background: darken(colors.$booking, 1%);
             }
         }
+        &--user-booking {
+            background: colors.$user-booking;
+            &:hover {
+                background: lighten(colors.$user-booking, 3%);
+            }
+            &:active {
+                background: darken(colors.$user-booking, 1%);
+            }
+        }
     }
 }
