@@ -4,13 +4,11 @@ async function fetchBookings() {
 
         const text = await response.text()
         console.log(`login  text:`, text)
-        const { success, errorMessage } = JSON.parse(text)
-        console.log(`createBookings  errorMessage:`, errorMessage)
+        const { success, data } = JSON.parse(text)
 
-        // const { success, data } = await response.json()
-        // if (!success) return
+        if (!success) return
 
-        // return data.bookings
+        return data.bookings
     } catch (error) {
         console.error(error)
         return null
