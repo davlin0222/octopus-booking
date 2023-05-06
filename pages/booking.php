@@ -17,6 +17,7 @@ Authorize::isLoggedIn(function () {
     <link rel="stylesheet" href="../assets/css/dist/main.css">
     <link rel="stylesheet" href="../assets/css/dist/booking-chart.css">
     <link rel="stylesheet" href="../assets/css/dist/booking-form.css">
+    <link rel="stylesheet" href="../assets/css/dist/menu.css">
     <script src="../components/booking-chart/booking-chart.js" defer type="module"></script>
     <script src="../components/booking-form/booking-form.js" defer type="module"></script>
     <script src="../components/menu/menu.js" defer type="module"></script>
@@ -24,11 +25,13 @@ Authorize::isLoggedIn(function () {
 </head>
 
 <body>
-    <?php include("../components/menu/menu.php") ?>
-
     <div class="page">
-        <?php include("../components/booking-chart/booking-chart.php") ?>
-        <?php include("../components/booking-form/booking-form.php") ?>
+        <?php include("../components/menu/menu.php") ?>
+
+        <main class="page__main">
+            <?php include("../components/booking-chart/booking-chart.php") ?>
+            <?php include("../components/booking-form/booking-form.php") ?>
+        </main>
     </div>
 </body>
 

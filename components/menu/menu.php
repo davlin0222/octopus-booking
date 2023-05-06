@@ -1,4 +1,4 @@
-<aside class="menu">
+<aside class="page__menu">
     <h1 class="heading">Octopus Booking</h1>
     <nav>
         <ul>

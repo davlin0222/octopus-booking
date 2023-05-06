@@ -12,11 +12,19 @@ body {
 
 body {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  height: 100vh;
 }
 
 .page {
-  width: -moz-fit-content;
-  width: fit-content;
+  display: flex;
+  height: 100%;
+}
+.page__menu {
+  width: 200px;
+  padding: 2rem;
+  background: #000;
+}
+.page__main {
   margin: auto;
   padding: 2rem;
 }
