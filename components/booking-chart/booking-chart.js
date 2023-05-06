@@ -1,4 +1,4 @@
-import { clockFormatHour, formatHourDuration } from './time-utils.js'
+import { clockFormatHour, formatHourDuration } from '../../assets/js/time-utils.js'
 import { fetchRooms } from './rooms.js'
 import { fetchBookings } from '../../assets/js/bookings.js'
 

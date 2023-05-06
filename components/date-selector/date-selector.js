@@ -1,3 +1,7 @@
+import { formatDate } from '../../assets/js/time-utils.js'
+
 const dateSelectorInput = document.querySelector('#date-selector__input')
 
-dateSelectorInput.value = '2023-05-06'
+const formattedDate = formatDate(new Date())
+console.log(`formattedDate:`, formattedDate)
+dateSelectorInput.value = formattedDate
