@@ -7,7 +7,7 @@ async function logoutButton_onClick(e) {
         const response = await fetch('../api/logout.php')
 
         const text = await response.text()
-        console.log(`login  text:`, text)
+        // console.log(`login  text:`, text)
 
         window.location.reload()
     } catch (error) {
