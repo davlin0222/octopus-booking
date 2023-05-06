@@ -111,6 +111,8 @@ function bookingCell_onMouseOver(e) {
 }
 
 function toggleCellSelect(bookingCell) {
+    if (bookingCell.classList.contains('booking-chart__booking-cell--booking')) return
+
     bookingCell.classList.toggle('booking-chart__booking-cell--available')
     bookingCell.classList.toggle('booking-chart__booking-cell--selected')
 }
