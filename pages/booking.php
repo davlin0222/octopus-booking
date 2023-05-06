@@ -23,9 +23,9 @@ Authorize::isLoggedIn(function () {
 </head>
 
 <body>
-    <div class="page">
-        <h1 class="heading">Octopus Booking</h1>
+    <?php include("../components/menu/menu.php") ?>
 
+    <div class="page">
         <?php include("../components/booking-chart/booking-chart.php") ?>
         <?php include("../components/booking-form/booking-form.php") ?>
     </div>
