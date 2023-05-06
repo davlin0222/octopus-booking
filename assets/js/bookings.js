@@ -1,6 +1,7 @@
-async function fetchBookings() {
+async function fetchBookings(dateString) {
+    console.log(`fetchBookings  dateString:`, dateString)
     try {
-        const response = await fetch('../api/fetch-bookings.php')
+        const response = await fetch(`../api/fetch-bookings.php?date=${dateString}`)
 
         const text = await response.text()
         console.log(`login  text:`, text)

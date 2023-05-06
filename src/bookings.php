@@ -17,10 +17,10 @@ function createBookings($bookings)
     return $bookingId;
 }
 
-function getBookings()
+function getBookings($dateString)
 {
-    $query = "SELECT hour, room_id FROM booking_times";
-    [$result] = executeQuery($query);
+    $query = "SELECT hour, room_id FROM booking_times WHERE date = ?";
+    [$result] = executeQuery($query, "s", [$dateString]);
 
     $bookings = mysqli_fetch_all($result, MYSQLI_ASSOC);
 

@@ -8,7 +8,10 @@ console.log(`formattedDate:`, formattedDate)
 dateSelectorInput.value = formattedDate
 
 dateSelectorInput.addEventListener('input', dateSelectorInput_onChange)
-function dateSelectorInput_onChange(e) {
+async function dateSelectorInput_onChange(e) {
     console.log(`dateSelectorInput_onChange  e:`, e)
-    renderBookingChart()
+
+    const dateString = e.target.value
+
+    await renderBookingChart(dateString)
 }
