@@ -11,7 +11,7 @@ async function bookingForm_onSubmit(e) {
     const selectedDate = getSelectedDate()
     const success = await createBookings(selectedBookings, selectedDate)
 
-    // if (success) {
-    // window.location.reload()
-    // }
+    if (success) {
+        window.location.reload()
+    }
 }
