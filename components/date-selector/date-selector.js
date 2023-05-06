@@ -3,8 +3,9 @@ import { renderBookingChart } from '../booking-chart/booking-chart.js'
 
 const dateSelectorInput = document.querySelector('#date-selector__input')
 
-const formattedDate = formatDate(new Date())
-dateSelectorInput.value = formattedDate
+const params = new URLSearchParams(window.location.search)
+const dateString = params.get('date') || formatDate(new Date()) // get the date string from the 'date' parameter, or use the current date if it's not present
+dateSelectorInput.value = dateString
 
 dateSelectorInput.addEventListener('input', dateSelectorInput_onChange)
 async function dateSelectorInput_onChange(e) {

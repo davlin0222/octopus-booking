@@ -13,7 +13,9 @@ document.addEventListener('mouseup', () => {
 
 const rooms = await fetchRooms()
 
-await renderBookingChart(formatDate(new Date()))
+const params = new URLSearchParams(window.location.search)
+const dateString = params.get('date') || formatDate(new Date()) // get the date string from the 'date' parameter, or use the current date if it's not present
+await renderBookingChart(dateString)
 
 export async function renderBookingChart(dateString) {
     const bookings = await fetchBookings(dateString)
