@@ -6,7 +6,7 @@
                 <a href="./booking.php">Booking</a>
             </li>
             <li>
-                <a href="./logout.php">Logout</a>
+                <button type="button" id="logout-button">Logout</button>
             </li>
         </ul>
     </nav>

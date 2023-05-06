@@ -19,6 +19,7 @@ Authorize::isLoggedIn(function () {
     <link rel="stylesheet" href="../assets/css/dist/booking-form.css">
     <script src="../components/booking-chart/booking-chart.js" defer type="module"></script>
     <script src="../components/booking-form/booking-form.js" defer type="module"></script>
+    <script src="../components/menu/menu.js" defer type="module"></script>
     <title>Octopus Booking</title>
 </head>
 
