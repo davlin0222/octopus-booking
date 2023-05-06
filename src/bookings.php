@@ -11,7 +11,7 @@ function createBookings($bookings)
     $query = "INSERT INTO booking_times (booking_id, room_id, date, hour) values (?,?,?,?)";
 
     foreach ($bookings as $booking) {
-        [$result, $bookingId] = executeQuery($query, "ssss", [$bookingId, $booking["roomId"], "2023-05-06", $booking["hour"]]);
+        [$result] = executeQuery($query, "ssss", [$bookingId, $booking["roomId"], "2023-05-06", $booking["hour"]]);
     }
 
     return $bookingId;

@@ -17,7 +17,6 @@ async function fetchBookings() {
 
 async function createBookings(selectedBookings) {
     console.log(JSON.stringify({ bookings: selectedBookings }))
-    console.log(`createBookings  createBookings:`)
     try {
         const response = await fetch('../api/create-bookings.php', {
             method: 'POST',
@@ -30,7 +29,7 @@ async function createBookings(selectedBookings) {
         const text = await response.text()
         console.log(`login  text:`, text)
         const { success, errorMessage } = JSON.parse(text)
-        console.log(`createBookings  errorMessage:`, errorMessage)
+        // console.log(`createBookings  errorMessage:`, errorMessage)
         return success
     } catch (error) {
         console.error(error)
