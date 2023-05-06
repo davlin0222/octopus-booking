@@ -113,7 +113,17 @@ function bookingCell_onMouseOver(e) {
 
 function toggleCellSelect(bookingCell) {
     if (bookingCell.classList.contains('_booking')) return
-    if (bookingCell.classList.contains('_user-booking')) return
+
+    if (bookingCell.classList.contains('_user-booking')) {
+        bookingCell.classList.remove('_user-booking')
+        bookingCell.classList.add('_selected-user-booking')
+        return
+    }
+    if (bookingCell.classList.contains('_selected-user-booking')) {
+        bookingCell.classList.remove('_selected-user-booking')
+        bookingCell.classList.add('_user-booking')
+        return
+    }
 
     bookingCell.classList.toggle('_available')
     bookingCell.classList.toggle('_selected')
