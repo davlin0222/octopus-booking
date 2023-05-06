@@ -13,10 +13,10 @@
 
 <body>
     <div class="page">
-
-        <h1 class="heading">Octopus Booking - Login</h1>
-
-        <?php include("../components/login-form/login-form.php") ?>
+        <main class="page__main">
+            <h1 class="heading">Octopus Booking - Login</h1>
+            <?php include("../components/login-form/login-form.php") ?>
+        </main>
     </div>
 </body>
 
