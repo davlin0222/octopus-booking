@@ -6,7 +6,7 @@ import {
 import { fetchRooms } from './rooms.js'
 import { fetchBookings } from '../../assets/js/bookings.js'
 
-const state = { mouseDown: false, isCancelBookings: false }
+const state = { mouseDown: false, selectionState: 'neither' }
 document.addEventListener('mouseup', () => {
     state.mouseDown = false
 })
@@ -105,18 +105,20 @@ function createBookingCell(hour, room, bookingsOnThisRow) {
 
 function bookingCell_onMouseDown(e) {
     state.mouseDown = true
-    toggleCellSelect(e.target)
+    toggleSelection(e.target)
 }
 function bookingCell_onMouseOver(e) {
-    if (state.mouseDown) toggleCellSelect(e.target)
+    if (state.mouseDown) toggleSelection(e.target)
 }
 
-function toggleCellSelect(bookingCell) {
-    foo(bookingCell)
+function toggleSelection(bookingCell) {
+    toggleTheCell(bookingCell)
     updateSelectionState()
-    console.log(`toggleCellSelect  state.isCancelBookings:`, state.isCancelBookings)
-
-    if (state.isCancelBookings) {
+    toggleSubmitButton()
+    console.log(`toggleCellSelect  state.selectionState:`, state.selectionState)
+}
+function toggleSubmitButton() {
+    if (state.selectionState == 'cancel') {
         document.querySelector('.booking-form__submit._book').classList.add('_hidden')
         document
             .querySelector('.booking-form__submit._cancel')
@@ -127,8 +129,11 @@ function toggleCellSelect(bookingCell) {
     document.querySelector('.booking-form__submit._cancel').classList.add('_hidden')
 }
 
-function foo(bookingCell) {
+function toggleTheCell(bookingCell) {
     if (bookingCell.classList.contains('_booking')) return
+
+    if (state.selectionState == 'cancel') return userBookingToggle(bookingCell)
+    if (state.selectionState == 'book') return normalToggle(bookingCell)
 
     if (bookingCell.classList.contains('_user-booking')) {
         bookingCell.classList.remove('_user-booking')
@@ -140,17 +145,48 @@ function foo(bookingCell) {
         bookingCell.classList.add('_user-booking')
         return
     }
+    bookingCell.classList.toggle('_available')
+    bookingCell.classList.toggle('_selected')
+}
+
+function normalToggle(bookingCell) {
+    if (
+        bookingCell.classList.contains('_user-booking') ||
+        bookingCell.classList.contains('_selected-user-booking')
+    )
+        return
 
     bookingCell.classList.toggle('_available')
     bookingCell.classList.toggle('_selected')
 }
+
+function userBookingToggle(bookingCell) {
+    if (bookingCell.classList.contains('_user-booking')) {
+        bookingCell.classList.remove('_user-booking')
+        bookingCell.classList.add('_selected-user-booking')
+        return
+    }
+    if (bookingCell.classList.contains('_selected-user-booking')) {
+        bookingCell.classList.remove('_selected-user-booking')
+        bookingCell.classList.add('_user-booking')
+        return
+    }
+}
+
 function updateSelectionState() {
     const selectedUserBookings = document.querySelectorAll(
         '.booking-chart__booking-cell._selected-user-booking'
     )
-    if (selectedUserBookings.length == 0) {
-        state.isCancelBookings = false
+    console.log(`updateSelectionState  selectedUserBookings:`, selectedUserBookings)
+    const selected = document.querySelectorAll('.booking-chart__booking-cell._selected')
+    console.log(`updateSelectionState  selected:`, selected)
+    if (selectedUserBookings.length > 0) {
+        state.selectionState = 'cancel'
         return
     }
-    state.isCancelBookings = true
+    if (selected.length > 0) {
+        state.selectionState = 'book'
+        return
+    }
+    state.selectionState = 'neither'
 }
