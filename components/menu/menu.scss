@@ -1,2 +1,19 @@
-.page__menu {
+.menu__nav-list {
+    list-style-type: none;
+}
+.menu__nav-list__item {
+    margin-bottom: 1rem;
+}
+.menu__nav-list__link {
+    color: aliceblue;
+    background: none;
+    border: none;
+    text-decoration: none;
+    width: 100%;
+    display: inline-block;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    user-select: none;
+    font-family: inherit;
 }
