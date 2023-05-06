@@ -6,7 +6,7 @@ import {
 import { fetchRooms } from './rooms.js'
 import { fetchBookings } from '../../assets/js/bookings.js'
 
-const state = { mouseDown: false }
+const state = { mouseDown: false, isCancelBookings: false }
 document.addEventListener('mouseup', () => {
     state.mouseDown = false
 })
@@ -112,6 +112,18 @@ function bookingCell_onMouseOver(e) {
 }
 
 function toggleCellSelect(bookingCell) {
+    foo(bookingCell)
+    updateSelectionState()
+    console.log(`toggleCellSelect  state.isCancelBookings:`, state.isCancelBookings)
+
+    // if (state.isCancelBookings) {
+    //     document.querySelector('.booking-form__submit').style.display = 'none'
+    //     return
+    // }
+    // document.querySelector('.booking-form__submit').style.display = 'block'
+}
+
+function foo(bookingCell) {
     if (bookingCell.classList.contains('_booking')) return
 
     if (bookingCell.classList.contains('_user-booking')) {
@@ -127,4 +139,14 @@ function toggleCellSelect(bookingCell) {
 
     bookingCell.classList.toggle('_available')
     bookingCell.classList.toggle('_selected')
+}
+function updateSelectionState() {
+    const selectedUserBookings = document.querySelectorAll(
+        '.booking-chart__booking-cell._selected-user-booking'
+    )
+    if (selectedUserBookings.length == 0) {
+        state.isCancelBookings = false
+        return
+    }
+    state.isCancelBookings = true
 }
