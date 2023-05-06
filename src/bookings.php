@@ -10,8 +10,6 @@ function createBookings($bookings)
     [$result, $bookingId] = executeQuery($query, "s", [$userId]);
     $query = "INSERT INTO booking_times (booking_id, room_id, date, hour) values (?,?,?,?)";
 
-    // echo json_encode($bookings);
-
     foreach ($bookings as $booking) {
         [$result, $bookingId] = executeQuery($query, "ssss", [$bookingId, $booking["roomId"], "2023-05-06", $booking["hour"]]);
     }

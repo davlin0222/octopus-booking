@@ -1,3 +1,17 @@
+async function fetchBookings() {
+    try {
+        const response = await fetch('../api/fetch-bookings.php')
+
+        const { success, data } = await response.json()
+        if (!success) return
+
+        return data.rooms
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
 async function createBookings(selectedBookings) {
     console.log(JSON.stringify({ bookings: selectedBookings }))
     console.log(`createBookings  createBookings:`)
@@ -20,4 +34,5 @@ async function createBookings(selectedBookings) {
         return false
     }
 }
-export { createBookings }
+
+export { fetchBookings, createBookings }

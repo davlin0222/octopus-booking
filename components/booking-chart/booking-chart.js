@@ -8,6 +8,7 @@ document.addEventListener('mouseup', () => {
 })
 
 const rooms = await fetchRooms()
+// const bookings = await fetchBookings()
 
 const tableHeader = createTableHeader(rooms)
 const tableBody = createTableBody(rooms, 6, 22)
