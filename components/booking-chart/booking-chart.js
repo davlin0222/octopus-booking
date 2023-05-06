@@ -79,9 +79,9 @@ function createTimeHeaderCell(rowHour) {
 }
 
 function determineBookingCellStatus(bookingCell, thisBooking) {
-    if (thisBooking?.isUserBooking) return 'user-booking'
-    if (thisBooking) return 'booking'
-    return 'available'
+    if (thisBooking?.isUserBooking) return '_user-booking'
+    if (thisBooking) return '_booking'
+    return '_available'
 }
 
 function createBookingCell(hour, room, bookingsOnThisRow) {
@@ -89,7 +89,7 @@ function createBookingCell(hour, room, bookingsOnThisRow) {
     const thisBooking = bookingsOnThisRow.find((booking) => booking.roomId == room.id)
     const bookingCellStatus = determineBookingCellStatus(bookingCell, thisBooking)
     bookingCell.classList.add('booking-chart__booking-cell')
-    bookingCell.classList.add('booking-chart__booking-cell--' + bookingCellStatus)
+    bookingCell.classList.add(bookingCellStatus)
 
     bookingCell.dataset.roomId = room.id
     bookingCell.dataset.hour = hour
@@ -112,8 +112,9 @@ function bookingCell_onMouseOver(e) {
 }
 
 function toggleCellSelect(bookingCell) {
-    if (bookingCell.classList.contains('booking-chart__booking-cell--booking')) return
+    if (bookingCell.classList.contains('_booking')) return
+    if (bookingCell.classList.contains('_user-booking')) return
 
-    bookingCell.classList.toggle('booking-chart__booking-cell--available')
-    bookingCell.classList.toggle('booking-chart__booking-cell--selected')
+    bookingCell.classList.toggle('_available')
+    bookingCell.classList.toggle('_selected')
 }

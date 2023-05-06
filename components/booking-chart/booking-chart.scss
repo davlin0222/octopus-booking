@@ -36,12 +36,12 @@
             background: darken(colors.$available, 1%);
         }
 
-        &--available {
+        &._available {
             &:hover {
                 background: lighten(colors.$available, 3%);
             }
         }
-        &--selected {
+        &._selected {
             background: colors.$selected;
             &:hover {
                 background: lighten(colors.$selected, 3%);
@@ -50,7 +50,7 @@
                 background: darken(colors.$selected, 1%);
             }
         }
-        &--booking {
+        &._booking {
             background: colors.$booking;
             &:hover {
                 background: lighten(colors.$booking, 3%);
@@ -59,7 +59,7 @@
                 background: darken(colors.$booking, 1%);
             }
         }
-        &--user-booking {
+        &._user-booking {
             background: colors.$user-booking;
             &:hover {
                 background: lighten(colors.$user-booking, 3%);

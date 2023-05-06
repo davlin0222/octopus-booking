@@ -27,33 +27,33 @@
 .booking-chart__booking-cell:active {
   background: #0daa36;
 }
-.booking-chart__booking-cell--available:hover {
+.booking-chart__booking-cell._available:hover {
   background: #0ebd3d;
 }
-.booking-chart__booking-cell--selected {
+.booking-chart__booking-cell._selected {
   background: #3260df;
 }
-.booking-chart__booking-cell--selected:hover {
+.booking-chart__booking-cell._selected:hover {
   background: #3f6ae1;
 }
-.booking-chart__booking-cell--selected:active {
+.booking-chart__booking-cell._selected:active {
   background: #2e5dde;
 }
-.booking-chart__booking-cell--booking {
+.booking-chart__booking-cell._booking {
   background: #b11d1d;
 }
-.booking-chart__booking-cell--booking:hover {
+.booking-chart__booking-cell._booking:hover {
   background: #be1f1f;
 }
-.booking-chart__booking-cell--booking:active {
+.booking-chart__booking-cell._booking:active {
   background: #ad1c1c;
 }
-.booking-chart__booking-cell--user-booking {
+.booking-chart__booking-cell._user-booking {
   background: #761db1;
 }
-.booking-chart__booking-cell--user-booking:hover {
+.booking-chart__booking-cell._user-booking:hover {
   background: #7f1fbe;
 }
-.booking-chart__booking-cell--user-booking:active {
+.booking-chart__booking-cell._user-booking:active {
   background: #731cad;
 }/*# sourceMappingURL=booking-chart.css.map */
