@@ -9,7 +9,7 @@
  *
  * @return mysqli_result|bool the result of the query, or false if the query failed
  */
-function executeQuery($query, $paramString, $params = null)
+function executeQuery($query, $paramString = "", $params = null)
 {
     // Check if a query was provided
     if (empty($query)) {
@@ -17,9 +17,9 @@ function executeQuery($query, $paramString, $params = null)
     }
 
     // Check if a parameter string was provided
-    if (empty($paramString)) {
-        throw new InvalidArgumentException('Parameter string must be provided');
-    }
+    // if (empty($paramString)) {
+    //     throw new InvalidArgumentException('Parameter string must be provided');
+    // }
 
     // Establish a database connection
     require("connection.php");
@@ -32,8 +32,10 @@ function executeQuery($query, $paramString, $params = null)
         throw new RuntimeException('Failed to prepare statement: ' . $connection->error);
     }
 
-    // Bind the parameters
-    $stmt->bind_param($paramString, ...$params);
+    if (strlen($paramString) != 0) {
+        // Bind the parameters
+        $stmt->bind_param($paramString, ...$params);
+    }
 
     // Execute the query and get the result
     if (!$stmt->execute()) {

@@ -1,9 +1,9 @@
 <?php
+require("../src/database/execute-query.php");
 
 function createBookings($bookings)
 {
     if (session_status() == PHP_SESSION_NONE) session_start();
-
     $userId = $_SESSION["user"]["id"];
 
     $query = "INSERT INTO bookings (user_id) values (?)";
@@ -15,4 +15,21 @@ function createBookings($bookings)
     }
 
     return $bookingId;
+}
+
+function getBookings()
+{
+    $query = "SELECT hour, room_id FROM booking_times";
+    [$result] = executeQuery($query);
+
+    $bookings = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $formattedBookings = array_map(function ($booking) {
+        return [
+            "hour" => $booking["hour"],
+            "roomId" => $booking["room_id"],
+        ];
+    }, $bookings);
+
+    return $formattedBookings;
 }

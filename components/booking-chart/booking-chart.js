@@ -1,6 +1,6 @@
 import { clockFormatHour, formatHourDuration } from './time-utils.js'
 import { fetchRooms } from './rooms.js'
-// import { fetchBookings } from './bookings.js'
+import { fetchBookings } from '../../assets/js/bookings.js'
 
 const state = { mouseDown: false }
 document.addEventListener('mouseup', () => {
@@ -8,7 +8,7 @@ document.addEventListener('mouseup', () => {
 })
 
 const rooms = await fetchRooms()
-// const bookings = await fetchBookings()
+const bookings = await fetchBookings()
 
 const tableHeader = createTableHeader(rooms)
 const tableBody = createTableBody(rooms, 6, 22)

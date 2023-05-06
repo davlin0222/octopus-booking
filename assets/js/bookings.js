@@ -2,10 +2,15 @@ async function fetchBookings() {
     try {
         const response = await fetch('../api/fetch-bookings.php')
 
-        const { success, data } = await response.json()
-        if (!success) return
+        const text = await response.text()
+        console.log(`login  text:`, text)
+        const { success, errorMessage } = JSON.parse(text)
+        console.log(`createBookings  errorMessage:`, errorMessage)
 
-        return data.rooms
+        // const { success, data } = await response.json()
+        // if (!success) return
+
+        // return data.bookings
     } catch (error) {
         console.error(error)
         return null
