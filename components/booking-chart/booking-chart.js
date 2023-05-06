@@ -1,4 +1,8 @@
-import { clockFormatHour, formatHourDuration } from './time-utils.js'
+import {
+    clockFormatHour,
+    formatHourDuration,
+    formatDate,
+} from '../../assets/js/time-utils.js'
 import { fetchRooms } from './rooms.js'
 import { fetchBookings } from '../../assets/js/bookings.js'
 
@@ -8,14 +12,21 @@ document.addEventListener('mouseup', () => {
 })
 
 const rooms = await fetchRooms()
-const bookings = await fetchBookings()
 
-const tableHeader = createTableHeader(rooms)
-const tableBody = createTableBody({ rooms, firstHour: 6, lastHour: 22, bookings })
+const params = new URLSearchParams(window.location.search)
+const dateString = params.get('date') || formatDate(new Date()) // get the date string from the 'date' parameter, or use the current date if it's not present
+await renderBookingChart(dateString)
 
-const bookingChart = document.querySelector('#booking-chart')
-bookingChart.appendChild(tableHeader)
-bookingChart.appendChild(tableBody)
+export async function renderBookingChart(dateString) {
+    const bookings = await fetchBookings(dateString)
+    const tableHeader = createTableHeader(rooms)
+    const tableBody = createTableBody({ rooms, firstHour: 6, lastHour: 22, bookings })
+
+    const bookingChart = document.querySelector('#booking-chart')
+    bookingChart.innerHTML = ''
+    bookingChart.appendChild(tableHeader)
+    bookingChart.appendChild(tableBody)
+}
 
 function createTableHeader(rooms) {
     const timeHeaderCell = document.createElement('th')

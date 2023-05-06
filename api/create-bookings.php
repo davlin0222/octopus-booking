@@ -18,7 +18,7 @@ $requestBody = json_decode(file_get_contents('php://input'), true);
 
 try {
     // create the user with the extracted data
-    $insertId = createBookings($requestBody["bookings"]);
+    $insertId = createBookings($requestBody["bookings"], $requestBody["date"]);
     echo jsonResponse(true, ["insertedId" => $insertId]);
 } catch (\Throwable $exception) {
     echo JsonErrorResponse($exception);

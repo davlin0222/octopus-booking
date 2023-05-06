@@ -13,7 +13,9 @@ Authorize::isLoggedIn(function () {
     );
 });
 
-$bookings = getBookings();
+$dateString = $_GET["date"];
+
+$bookings = getBookings($dateString);
 
 echo jsonResponse(
     true,

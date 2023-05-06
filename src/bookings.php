@@ -1,7 +1,7 @@
 <?php
 require("../src/database/execute-query.php");
 
-function createBookings($bookings)
+function createBookings($bookings, $date)
 {
     if (session_status() == PHP_SESSION_NONE) session_start();
     $userId = $_SESSION["user"]["id"];
@@ -11,16 +11,16 @@ function createBookings($bookings)
     $query = "INSERT INTO booking_times (booking_id, room_id, date, hour) values (?,?,?,?)";
 
     foreach ($bookings as $booking) {
-        [$result] = executeQuery($query, "ssss", [$bookingId, $booking["roomId"], "2023-05-06", $booking["hour"]]);
+        [$result] = executeQuery($query, "ssss", [$bookingId, $booking["roomId"], $date, $booking["hour"]]);
     }
 
     return $bookingId;
 }
 
-function getBookings()
+function getBookings($dateString)
 {
-    $query = "SELECT hour, room_id FROM booking_times";
-    [$result] = executeQuery($query);
+    $query = "SELECT hour, room_id FROM booking_times WHERE date = ?";
+    [$result] = executeQuery($query, "s", [$dateString]);
 
     $bookings = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
