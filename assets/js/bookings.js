@@ -16,12 +16,13 @@ async function fetchBookings(dateString) {
     }
 }
 
-async function createBookings(selectedBookings) {
-    console.log(JSON.stringify({ bookings: selectedBookings }))
+async function createBookings(selectedBookings, selectedDate) {
+    const data = { bookings: selectedBookings, date: selectedDate }
+    console.log(`createBookings  data:`, data)
     try {
         const response = await fetch('../api/create-bookings.php', {
             method: 'POST',
-            body: JSON.stringify({ bookings: selectedBookings }),
+            body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
             },
