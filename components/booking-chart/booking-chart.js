@@ -10,12 +10,17 @@ document.addEventListener('mouseup', () => {
 const rooms = await fetchRooms()
 const bookings = await fetchBookings()
 
-const tableHeader = createTableHeader(rooms)
-const tableBody = createTableBody({ rooms, firstHour: 6, lastHour: 22, bookings })
+renderBookingChart()
 
-const bookingChart = document.querySelector('#booking-chart')
-bookingChart.appendChild(tableHeader)
-bookingChart.appendChild(tableBody)
+export function renderBookingChart() {
+    const tableHeader = createTableHeader(rooms)
+    const tableBody = createTableBody({ rooms, firstHour: 6, lastHour: 22, bookings })
+
+    const bookingChart = document.querySelector('#booking-chart')
+    // bookingChart.innerHTML = ''
+    bookingChart.appendChild(tableHeader)
+    bookingChart.appendChild(tableBody)
+}
 
 function createTableHeader(rooms) {
     const timeHeaderCell = document.createElement('th')
