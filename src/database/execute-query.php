@@ -11,6 +11,8 @@
  */
 function executeQuery($query, $paramString = "", $params = null)
 {
+    // echo json_encode([]);
+
     // Check if a query was provided
     if (empty($query)) {
         throw new InvalidArgumentException('Query must be provided');
