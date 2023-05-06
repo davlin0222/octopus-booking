@@ -2,9 +2,7 @@
 
 function createBookings($bookings)
 {
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
+    if (session_status() == PHP_SESSION_NONE) session_start();
 
     $userId = $_SESSION["user"]["id"];
 
@@ -17,7 +15,6 @@ function createBookings($bookings)
     foreach ($bookings as $booking) {
         [$result, $bookingId] = executeQuery($query, "ssss", [$bookingId, $booking["roomId"], "2023-05-06", $booking["hour"]]);
     }
-
 
     return $bookingId;
 }

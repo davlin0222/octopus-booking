@@ -2,19 +2,19 @@
 
 class Authorize
 {
-    public static function isAdmin($callback)
+    public static function isAdmin($notAdminCallback)
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) session_start();
         if (!$_SESSION["isAdmin"]) {
-            return $callback();
+            return $notAdminCallback();
             exit();
         }
     }
-    public static function isLoggedIn($callbackIfNotLoggedIn)
+    public static function isLoggedIn($notLoggedInCallback)
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) session_start();
         if (!isset($_SESSION["isLoggedIn"]) || !$_SESSION["isLoggedIn"]) {
-            return $callbackIfNotLoggedIn();
+            return $notLoggedInCallback();
             exit();
         }
     }
