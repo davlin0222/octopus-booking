@@ -8,4 +8,10 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.booking-form__submit._hidden {
+  display: none;
+}
+.booking-form__submit._cancel {
+  background: #c58002;
 }/*# sourceMappingURL=booking-form.css.map */

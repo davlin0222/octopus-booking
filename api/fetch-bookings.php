@@ -19,5 +19,5 @@ $bookings = getBookings($dateString);
 
 echo jsonResponse(
     true,
-    ["bookings" => $bookings]
+    ["bookings" => $bookings, "userId" => $_SESSION["user"]["id"]]
 );

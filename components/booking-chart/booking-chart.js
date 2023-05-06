@@ -6,7 +6,7 @@ import {
 import { fetchRooms } from './rooms.js'
 import { fetchBookings } from '../../assets/js/bookings.js'
 
-const state = { mouseDown: false }
+const state = { mouseDown: false, selectionState: 'neither' }
 document.addEventListener('mouseup', () => {
     state.mouseDown = false
 })
@@ -78,17 +78,18 @@ function createTimeHeaderCell(rowHour) {
     return timeHeaderCell
 }
 
+function determineBookingCellStatus(bookingCell, thisBooking) {
+    if (thisBooking?.isUserBooking) return '_user-booking'
+    if (thisBooking) return '_booking'
+    return '_available'
+}
+
 function createBookingCell(hour, room, bookingsOnThisRow) {
     const bookingCell = document.createElement('td')
-    bookingCell.classList.add('booking-chart__booking-cell')
-    bookingCell.classList.add('booking-chart__booking-cell--available')
-
     const thisBooking = bookingsOnThisRow.find((booking) => booking.roomId == room.id)
-
-    if (thisBooking) {
-        bookingCell.classList.add('booking-chart__booking-cell--booking')
-        bookingCell.classList.remove('booking-chart__booking-cell--available')
-    }
+    const bookingCellStatus = determineBookingCellStatus(bookingCell, thisBooking)
+    bookingCell.classList.add('booking-chart__booking-cell')
+    bookingCell.classList.add(bookingCellStatus)
 
     bookingCell.dataset.roomId = room.id
     bookingCell.dataset.hour = hour
@@ -104,15 +105,88 @@ function createBookingCell(hour, room, bookingsOnThisRow) {
 
 function bookingCell_onMouseDown(e) {
     state.mouseDown = true
-    toggleCellSelect(e.target)
+    toggleSelection(e.target)
 }
 function bookingCell_onMouseOver(e) {
-    if (state.mouseDown) toggleCellSelect(e.target)
+    if (state.mouseDown) toggleSelection(e.target)
 }
 
-function toggleCellSelect(bookingCell) {
-    if (bookingCell.classList.contains('booking-chart__booking-cell--booking')) return
+function toggleSelection(bookingCell) {
+    toggleTheCell(bookingCell)
+    updateSelectionState()
+    toggleSubmitButton()
+    console.log(`toggleCellSelect  state.selectionState:`, state.selectionState)
+}
+function toggleSubmitButton() {
+    if (state.selectionState == 'cancel') {
+        document.querySelector('.booking-form__submit._book').classList.add('_hidden')
+        document
+            .querySelector('.booking-form__submit._cancel')
+            .classList.remove('_hidden')
+        return
+    }
+    document.querySelector('.booking-form__submit._book').classList.remove('_hidden')
+    document.querySelector('.booking-form__submit._cancel').classList.add('_hidden')
+}
 
-    bookingCell.classList.toggle('booking-chart__booking-cell--available')
-    bookingCell.classList.toggle('booking-chart__booking-cell--selected')
+function toggleTheCell(bookingCell) {
+    if (bookingCell.classList.contains('_booking')) return
+
+    if (state.selectionState == 'cancel') return userBookingToggle(bookingCell)
+    if (state.selectionState == 'book') return normalToggle(bookingCell)
+
+    if (bookingCell.classList.contains('_user-booking')) {
+        bookingCell.classList.remove('_user-booking')
+        bookingCell.classList.add('_selected-user-booking')
+        return
+    }
+    if (bookingCell.classList.contains('_selected-user-booking')) {
+        bookingCell.classList.remove('_selected-user-booking')
+        bookingCell.classList.add('_user-booking')
+        return
+    }
+    bookingCell.classList.toggle('_available')
+    bookingCell.classList.toggle('_selected')
+}
+
+function normalToggle(bookingCell) {
+    if (
+        bookingCell.classList.contains('_user-booking') ||
+        bookingCell.classList.contains('_selected-user-booking')
+    )
+        return
+
+    bookingCell.classList.toggle('_available')
+    bookingCell.classList.toggle('_selected')
+}
+
+function userBookingToggle(bookingCell) {
+    if (bookingCell.classList.contains('_user-booking')) {
+        bookingCell.classList.remove('_user-booking')
+        bookingCell.classList.add('_selected-user-booking')
+        return
+    }
+    if (bookingCell.classList.contains('_selected-user-booking')) {
+        bookingCell.classList.remove('_selected-user-booking')
+        bookingCell.classList.add('_user-booking')
+        return
+    }
+}
+
+function updateSelectionState() {
+    const selectedUserBookings = document.querySelectorAll(
+        '.booking-chart__booking-cell._selected-user-booking'
+    )
+    console.log(`updateSelectionState  selectedUserBookings:`, selectedUserBookings)
+    const selected = document.querySelectorAll('.booking-chart__booking-cell._selected')
+    console.log(`updateSelectionState  selected:`, selected)
+    if (selectedUserBookings.length > 0) {
+        state.selectionState = 'cancel'
+        return
+    }
+    if (selected.length > 0) {
+        state.selectionState = 'book'
+        return
+    }
+    state.selectionState = 'neither'
 }

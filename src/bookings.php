@@ -1,6 +1,28 @@
 <?php
 require("../src/database/execute-query.php");
 
+function getBookings($dateString)
+{
+    $query =
+        "SELECT bt.hour, bt.room_id, b.user_id
+        FROM booking_times bt
+        INNER JOIN bookings b ON b.booking_id = bt.booking_id
+        WHERE bt.date = ?";
+    [$result] = executeQuery($query, "s", [$dateString]);
+
+    $bookings = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $formattedBookings = array_map(function ($booking) {
+        return [
+            "hour" => $booking["hour"],
+            "roomId" => $booking["room_id"],
+            "userId" => $booking["user_id"],
+        ];
+    }, $bookings);
+
+    return $formattedBookings;
+}
+
 function createBookings($bookings, $date)
 {
     if (session_status() == PHP_SESSION_NONE) session_start();
@@ -17,19 +39,12 @@ function createBookings($bookings, $date)
     return $bookingId;
 }
 
-function getBookings($dateString)
+function cancelBookings($bookings, $date)
 {
-    $query = "SELECT hour, room_id FROM booking_times WHERE date = ?";
-    [$result] = executeQuery($query, "s", [$dateString]);
+    $query = "DELETE FROM booking_times WHERE date = ? AND hour = ? AND room_id = ? LIMIT 1";
 
-    $bookings = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-    $formattedBookings = array_map(function ($booking) {
-        return [
-            "hour" => $booking["hour"],
-            "roomId" => $booking["room_id"],
-        ];
-    }, $bookings);
-
-    return $formattedBookings;
+    foreach ($bookings as $booking) {
+        [$result] = executeQuery($query, "sss", [$date, $booking["hour"], $booking["roomId"]]);
+    }
+    return $result;
 }
