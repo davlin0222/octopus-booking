@@ -4,6 +4,8 @@
 .booking-form__invitations {
   margin-top: 1rem;
   flex: 1;
+  height: 300px;
+  overflow-x: scroll;
 }
 .booking-form__buttons {
   margin-top: 1rem;

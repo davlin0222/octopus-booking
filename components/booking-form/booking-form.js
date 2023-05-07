@@ -51,22 +51,14 @@ async function renderInvitationList() {
 
     const invitationsList = document.querySelector('.invitations__list')
 
-    users.forEach((user) => {
-        const invitationListItem = document.createElement('li')
-        const invitationLabel = document.createElement('label')
-        const invitationInput = document.createElement('input')
-        const invitationSpan = document.createElement('span')
+    const template = document.querySelector('#invitation-item-template')
 
-        invitationSpan.innerText = `${user.firstName} ${user.lastName}`
-        invitationSpan.classList.add('invitations__text')
-        invitationInput.classList.add('invitations__input')
-        invitationInput.type = 'checkbox'
+    users.forEach((user) => {
+        const invitationListItem = template.content.cloneNode(true)
+        const invitationInput = invitationListItem.querySelector('.invitations__input')
         invitationInput.value = user.email
-        invitationLabel.appendChild(invitationInput)
-        invitationLabel.appendChild(invitationSpan)
-        invitationLabel.classList.add('invitations__label')
-        invitationListItem.appendChild(invitationLabel)
-        invitationListItem.classList.add('invitations__list-item')
+        const invitationSpan = invitationListItem.querySelector('.invitations__text')
+        invitationSpan.innerText = `${user.firstName} ${user.lastName}`
 
         invitationsList.appendChild(invitationListItem)
     })

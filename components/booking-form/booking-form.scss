@@ -5,6 +5,8 @@
     &__invitations {
         margin-top: 1rem;
         flex: 1;
+        height: 300px;
+        overflow-x: scroll;
     }
     &__buttons {
         margin-top: 1rem;
