@@ -41,6 +41,9 @@
                 background: lighten(colors.$available, 3%);
             }
         }
+        &._on-same-row {
+            cursor: not-allowed;
+        }
         &._selected {
             background: colors.$selected;
             &:hover {

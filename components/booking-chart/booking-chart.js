@@ -131,6 +131,7 @@ function toggleSubmitButton() {
 
 function toggleTheCell(bookingCell) {
     if (bookingCell.classList.contains('_booking')) return
+    if (bookingCell.classList.contains('_on-same-row')) return
 
     if (state.selectionState == 'cancel') return userBookingToggle(bookingCell)
     if (state.selectionState == 'book') return normalToggle(bookingCell)
@@ -145,8 +146,7 @@ function toggleTheCell(bookingCell) {
         bookingCell.classList.add('_user-booking')
         return
     }
-    bookingCell.classList.toggle('_available')
-    bookingCell.classList.toggle('_selected')
+    normalToggle(bookingCell)
 }
 
 function normalToggle(bookingCell) {
@@ -155,6 +155,22 @@ function normalToggle(bookingCell) {
         bookingCell.classList.contains('_selected-user-booking')
     )
         return
+
+    const bookingCellsOnThisRow = bookingCell.parentNode.childNodes
+    const otherBookingCellsOnThisRow = Array.from(bookingCellsOnThisRow).filter(
+        (bookingCellOnRow) => bookingCellOnRow != bookingCell
+    )
+    // const availableBookingCellsOnThisRow = otherBookingCellsOnThisRow.filter(
+    //     (bookingCell) => bookingCell.classList.contains('_available')
+    // )
+    otherBookingCellsOnThisRow.forEach((bookingCell) => {
+        if (
+            !bookingCell.classList.contains('_available') ||
+            !bookingCell.classList.contains('_on-same-row')
+        )
+            bookingCell.classList.toggle('_available')
+        bookingCell.classList.toggle('_on-same-row')
+    })
 
     bookingCell.classList.toggle('_available')
     bookingCell.classList.toggle('_selected')
