@@ -30,7 +30,6 @@
 
 .invitations__list {
   list-style-type: none;
-  border: 1px solid #2c2c2c;
 }
 .invitations__label {
   -webkit-user-select: none;
@@ -39,8 +38,8 @@
   display: inline-block;
   width: 100%;
   cursor: pointer;
-  border: 1px solid #161616;
-  background: #1b1b1b;
+  border: 3px solid #fff0e7;
+  background: #fbddd4;
   padding: 1rem;
 }
 .invitations__input {

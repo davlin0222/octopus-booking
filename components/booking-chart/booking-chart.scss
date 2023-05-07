@@ -1,12 +1,11 @@
 @use "../../assets/css/colors";
 
 .booking-chart {
-    border-collapse: collapse;
     table-layout: fixed;
-    width: 420px;
+    // width: 420px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-spacing: 2px;
 
-    background: #181c1c;
     user-select: none;
 
     &__row {
@@ -16,10 +15,12 @@
     &__header-cell,
     &__row-header-cell,
     &__booking-cell {
-        border: 1px solid #4e5d5d;
-        padding: 5px 0;
+        // border: 1px solid #4e5d5d;
+        border-radius: 3px;
+        // padding: 5px 0;
         text-align: center;
         overflow: hidden;
+        min-width: 22px;
     }
 
     &__header-cell {
@@ -31,6 +32,7 @@
     &__booking-cell {
         cursor: pointer;
         background: colors.$available;
+        height: 23px;
 
         &:active {
             background: darken(colors.$available, 1%);
