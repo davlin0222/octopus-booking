@@ -11,19 +11,25 @@ use PHPMailer\PHPMailer\Exception;
 // create a new PHPMailer instance
 $mail = new PHPMailer(true);
 
+
+$email = parse_ini_file(
+    __DIR__ . "/../php.ini",
+    true
+)["email"];
+
 try {
     // specify SMTP settings
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
+    $mail->Host = $email["host"];
     $mail->SMTPAuth = true;
-    $mail->Username = 'your_email@gmail.com';
-    $mail->Password = 'your_email_password';
+    $mail->Username = $email["username"];
+    $mail->Password = $email["password"];
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;
 
     // set email content
-    $mail->setFrom('from@example.com', 'From Name');
-    $mail->addAddress('to@example.com', 'To Name');
+    $mail->setFrom($email["username"], 'Info');
+    $mail->addAddress($email["testAddress"], 'David');
     $mail->Subject = 'Test Email';
     $mail->Body = 'This is a test email';
 
