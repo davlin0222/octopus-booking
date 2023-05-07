@@ -50,4 +50,24 @@ async function renderInvitationList() {
     console.log(`renderInvitationList  users:`, users)
 
     const invitationsList = document.querySelector('.invitations__list')
+
+    users.forEach((user) => {
+        const invitationListItem = document.createElement('li')
+        const invitationLabel = document.createElement('label')
+        const invitationInput = document.createElement('input')
+        const invitationSpan = document.createElement('span')
+
+        invitationSpan.innerText = `${user.firstName} ${user.lastName}`
+        invitationSpan.classList.add('invitations__text')
+        invitationInput.classList.add('invitations__input')
+        invitationInput.type = 'checkbox'
+        invitationInput.value = user.email
+        invitationLabel.appendChild(invitationInput)
+        invitationLabel.appendChild(invitationSpan)
+        invitationLabel.classList.add('invitations__label')
+        invitationListItem.appendChild(invitationLabel)
+        invitationListItem.classList.add('invitations__list-item')
+
+        invitationsList.appendChild(invitationListItem)
+    })
 }
