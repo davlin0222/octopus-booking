@@ -78,16 +78,20 @@ function createTimeHeaderCell(rowHour) {
     return timeHeaderCell
 }
 
-function determineBookingCellStatus(bookingCell, thisBooking) {
+function determineBookingCellStatus(bookingsOnThisRow, room) {
+    const thisBooking = bookingsOnThisRow.find((booking) => booking.roomId == room.id)
+    const userBookingsOnThisRow = bookingsOnThisRow.filter(
+        (bookingCell) => bookingCell.isUserBooking
+    )
     if (thisBooking?.isUserBooking) return '_user-booking'
     if (thisBooking) return '_booking'
+    if (userBookingsOnThisRow.length > 0) return '_on-same-row'
     return '_available'
 }
 
 function createBookingCell(hour, room, bookingsOnThisRow) {
     const bookingCell = document.createElement('td')
-    const thisBooking = bookingsOnThisRow.find((booking) => booking.roomId == room.id)
-    const bookingCellStatus = determineBookingCellStatus(bookingCell, thisBooking)
+    const bookingCellStatus = determineBookingCellStatus(bookingsOnThisRow, room)
     bookingCell.classList.add('booking-chart__booking-cell')
     bookingCell.classList.add(bookingCellStatus)
 

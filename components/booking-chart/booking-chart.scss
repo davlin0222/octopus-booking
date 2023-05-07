@@ -43,6 +43,9 @@
         }
         &._on-same-row {
             cursor: not-allowed;
+            &:hover {
+                background: lighten(colors.$available, 3%);
+            }
         }
         &._selected {
             background: colors.$selected;
