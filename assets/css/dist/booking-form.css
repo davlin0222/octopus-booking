@@ -1,7 +1,17 @@
+.booking-form {
+  display: flex;
+}
+.booking-form__invitations {
+  margin-top: 1rem;
+  flex: 1;
+}
+.booking-form__buttons {
+  margin-top: 1rem;
+  flex: 1;
+}
 .booking-form__submit {
   display: block;
   margin: auto;
-  margin-top: 1rem;
   background-color: #2959de;
   color: white;
   padding: 10px 20px;
@@ -14,4 +24,21 @@
 }
 .booking-form__submit._cancel {
   background: #c58002;
+}
+
+.invitations__list {
+  list-style-type: none;
+}
+.invitations__label {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+}
+.invitations__text {
+  -webkit-user-select: text;
+     -moz-user-select: text;
+          user-select: text;
 }/*# sourceMappingURL=booking-form.css.map */
