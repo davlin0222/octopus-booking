@@ -24,9 +24,8 @@ async function fetchBookings(dateString) {
     }
 }
 
-async function createBookings(selectedBookings, selectedDate) {
-    const data = { bookings: selectedBookings, date: selectedDate }
-    // console.log(`createBookings  data:`, data)
+async function createBookings(selectedBookings, selectedDate, invitations) {
+    const data = { bookings: selectedBookings, date: selectedDate, invitations }
     try {
         const response = await fetch('../api/create-bookings.php', {
             method: 'POST',

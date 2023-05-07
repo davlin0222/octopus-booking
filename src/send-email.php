@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 
 
 
-function sendEmail($subject, $body)
+function sendEmail($recipient, $subject, $body)
 {
     $email = parse_ini_file(
         __DIR__ . "/../php.ini",
@@ -31,7 +31,7 @@ function sendEmail($subject, $body)
 
         // set email content
         $mail->setFrom($email["username"], 'Info');
-        $mail->addAddress($email["testAddress"], 'David');
+        $mail->addAddress($recipient, 'David');
         $mail->Subject = $subject;
         $mail->Body = $body;
 
