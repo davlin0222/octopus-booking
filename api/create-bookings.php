@@ -21,7 +21,8 @@ try {
     // create the user with the extracted data
     $insertId = createBookings($requestBody["bookings"], $requestBody["date"]);
 
-    sendEmail("Subject", "Message");
+    $rawBooking = json_encode($requestBody["bookings"], JSON_PRETTY_PRINT);
+    sendEmail("Booking confirmation for {$requestBody["date"]}", "Bookings in json format: \n{$rawBooking}");
 
     echo jsonResponse(true, ["insertedId" => $insertId]);
 } catch (\Throwable $exception) {
