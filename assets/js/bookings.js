@@ -5,7 +5,7 @@ async function fetchBookings(dateString) {
         const text = await response.text()
         // console.log(`login  text:`, text)
         const { success, data } = JSON.parse(text)
-        console.log(`fetchBookings  data.userId:`, data.userId)
+        // console.log(`fetchBookings  data.userId:`, data.userId)
 
         if (!success) return
 
@@ -37,7 +37,7 @@ async function createBookings(selectedBookings, selectedDate) {
         })
 
         const text = await response.text()
-        console.log(`login  text:`, text)
+        // console.log(`login  text:`, text)
         const { success, errorMessage } = JSON.parse(text)
         // console.log(`createBookings  errorMessage:`, errorMessage)
         return success
@@ -60,7 +60,7 @@ async function cancelBookings(selectedBookings, selectedDate) {
         })
 
         const text = await response.text()
-        console.log(`login  text:`, text)
+        // console.log(`login  text:`, text)
         const { success, errorMessage } = JSON.parse(text)
         // console.log(`createBookings  errorMessage:`, errorMessage)
         return success
