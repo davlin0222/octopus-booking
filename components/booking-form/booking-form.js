@@ -12,6 +12,8 @@ cancelBookingsButton.addEventListener('click', cancelBookingsButton_onClick)
 
 async function bookButton_onClick(e) {
     e.preventDefault()
+    // console.log(`bookButton_onClick  recipients:`, e.target.form.recipients)
+    console.log(`bookButton_onClick  e.target:`, new FormData(e.target.form))
     const selectedBookings = getSelectedBookings()
     const selectedDate = getSelectedDate()
     const success = /*await*/ createBookings(selectedBookings, selectedDate)
