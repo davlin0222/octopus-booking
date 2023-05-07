@@ -2,6 +2,26 @@
 
 require("database/execute-query.php");
 
+
+function getUsers()
+{
+    $query = "SELECT user_id, first_name, last_name, email from users";
+    [$result] = executeQuery($query);
+
+    $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    $formattedUsers = array_map(function ($user) {
+        return [
+            "id" => $user["user_id"],
+            "firstName" => $user["first_name"],
+            "lastName" => $user["last_name"],
+            "email" => $user["email"],
+        ];
+    }, $users);
+
+    return $formattedUsers;
+}
+
 /**
  * Create a new user
  *

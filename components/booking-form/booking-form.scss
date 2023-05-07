@@ -1,10 +1,20 @@
 @use "../../assets/css/colors";
 
 .booking-form {
+    display: flex;
+    &__invitations {
+        margin-top: 1rem;
+        flex: 1;
+        height: 300px;
+        overflow-x: scroll;
+    }
+    &__buttons {
+        margin-top: 1rem;
+        flex: 1;
+    }
     &__submit {
         display: block;
         margin: auto;
-        margin-top: 1rem;
         background-color: darken(colors.$selected, 2%);
         color: white;
         padding: 10px 20px;
@@ -17,5 +27,30 @@
         &._cancel {
             background: #c58002;
         }
+    }
+}
+
+.invitations {
+    &__list {
+        list-style-type: none;
+        border: 1px solid #2c2c2c;
+    }
+    &__list-item {
+    }
+    &__label {
+        user-select: none;
+        display: inline-block;
+        width: 100%;
+        cursor: pointer;
+        border: 1px solid #161616;
+        background: #1b1b1b;
+        padding: 1rem;
+    }
+    &__input {
+        cursor: pointer;
+    }
+    &__text {
+        padding: 0.5rem;
+        user-select: text;
     }
 }
