@@ -30,6 +30,12 @@
 .booking-chart__booking-cell._available:hover {
   background: #0ebd3d;
 }
+.booking-chart__booking-cell._on-same-row {
+  cursor: not-allowed;
+}
+.booking-chart__booking-cell._on-same-row:hover {
+  background: #0ebd3d;
+}
 .booking-chart__booking-cell._selected {
   background: #3260df;
 }

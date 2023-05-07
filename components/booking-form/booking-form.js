@@ -16,9 +16,9 @@ async function bookButton_onClick(e) {
     const selectedDate = getSelectedDate()
     const success = await createBookings(selectedBookings, selectedDate)
 
-    if (success) {
-        window.location.reload()
-    }
+    // if (success) {
+    //     window.location.reload()
+    // }
 }
 
 async function cancelBookingsButton_onClick(e) {
