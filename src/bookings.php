@@ -28,6 +28,12 @@ function createBookings($bookings, $date)
     if (session_status() == PHP_SESSION_NONE) session_start();
     $userId = $_SESSION["user"]["id"];
 
+    $hours = array_column($bookings, 'hour');
+    $uniqueHours = array_unique($hours);
+    $hasDuplicateHours = count($hours) !== count($uniqueHours);
+
+    if ($hasDuplicateHours) return;
+
     $query = "INSERT INTO bookings (user_id) values (?)";
     [$result, $bookingId] = executeQuery($query, "s", [$userId]);
     $query = "INSERT INTO booking_times (booking_id, room_id, date, hour) values (?,?,?,?)";
