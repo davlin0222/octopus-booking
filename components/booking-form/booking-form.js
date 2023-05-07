@@ -14,11 +14,17 @@ async function bookButton_onClick(e) {
     e.preventDefault()
     const selectedBookings = getSelectedBookings()
     const selectedDate = getSelectedDate()
-    const success = await createBookings(selectedBookings, selectedDate)
+    const success = /*await*/ createBookings(selectedBookings, selectedDate)
+    console.log(`bookButton_onClick  success:`, success)
 
-    if (success) {
-        window.location.reload()
-    }
+    const selectedCells = document.querySelectorAll(
+        '.booking-chart__booking-cell._selected'
+    )
+
+    selectedCells.forEach((selectedCell) => {
+        selectedCell.classList.remove('_selected')
+        selectedCell.classList.add('_user-booking')
+    })
 }
 
 async function cancelBookingsButton_onClick(e) {
@@ -27,7 +33,7 @@ async function cancelBookingsButton_onClick(e) {
     console.log(`cancelBookingsButton_onClick  selectedBookings:`, selectedBookings)
     const selectedDate = getSelectedDate()
     const success = await cancelBookings(selectedBookings, selectedDate)
-    console.log(`cancelBookingsButton_onClick  success:`, success)
+    // console.log(`cancelBookingsButton_onClick  success:`, success)
 
     if (success) {
         window.location.reload()
