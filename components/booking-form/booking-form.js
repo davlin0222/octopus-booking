@@ -27,7 +27,7 @@ async function cancelBookingsButton_onClick(e) {
     console.log(`cancelBookingsButton_onClick  selectedBookings:`, selectedBookings)
     const selectedDate = getSelectedDate()
     const success = await cancelBookings(selectedBookings, selectedDate)
-    console.log(`cancelBookingsButton_onClick  success:`, success)
+    // console.log(`cancelBookingsButton_onClick  success:`, success)
 
     if (success) {
         window.location.reload()
