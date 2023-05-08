@@ -21,6 +21,7 @@
         text-align: center;
         overflow: hidden;
         min-width: 22px;
+        font-weight: normal;
     }
 
     &__header-cell {
@@ -59,6 +60,7 @@
             }
         }
         &._booking {
+            cursor: inherit;
             background: colors.$booking;
             &:hover {
                 background: lighten(colors.$booking, 3%);

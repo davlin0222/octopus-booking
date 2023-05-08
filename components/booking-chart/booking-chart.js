@@ -31,11 +31,14 @@ export async function renderBookingChart(dateString) {
 function createTableHeader(rooms) {
     const timeHeaderCell = document.createElement('th')
     timeHeaderCell.classList.add('booking-chart__header-cell')
+    timeHeaderCell.innerText = 'Room'
+    timeHeaderCell.title = 'Rooms →\nTime ↓'
 
     const headerCells = rooms.map((room) => {
         const headerCell = document.createElement('th')
         headerCell.classList.add('booking-chart__header-cell')
         headerCell.innerText = room.id
+        headerCell.title = `Room ${room.id}`
         return headerCell
     })
 

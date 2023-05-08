@@ -14,6 +14,7 @@
   text-align: center;
   overflow: hidden;
   min-width: 22px;
+  font-weight: normal;
 }
 .booking-chart__header-cell:first-child {
   width: 45px;
@@ -45,6 +46,7 @@
   background: #5b84f7;
 }
 .booking-chart__booking-cell._booking {
+  cursor: inherit;
   background: #c84a4a;
 }
 .booking-chart__booking-cell._booking:hover {
