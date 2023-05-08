@@ -21,6 +21,10 @@ async function bookButton_onClick(e) {
     const success = /*await*/ createBookings(selectedBookings, selectedDate, invitations)
     console.log(`bookButton_onClick  success:`, success)
 
+    if (!success) return
+
+    // window.location.reload()
+
     const selectedCells = document.querySelectorAll(
         '.booking-chart__booking-cell._selected'
     )
@@ -39,9 +43,18 @@ async function cancelBookingsButton_onClick(e) {
     const success = await cancelBookings(selectedBookings, selectedDate)
     // console.log(`cancelBookingsButton_onClick  success:`, success)
 
-    if (success) {
-        window.location.reload()
-    }
+    if (!success) return
+
+    window.location.reload()
+
+    // const selectedUserBookingCells = document.querySelectorAll(
+    //     '.booking-chart__booking-cell._selected-user-booking'
+    // )
+
+    // selectedUserBookingCells.forEach((selectedUserBookingCell) => {
+    //     selectedUserBookingCell.classList.remove('_selected-user-booking')
+    //     selectedUserBookingCell.classList.add('_available')
+    // })
 }
 
 async function renderInvitationList() {

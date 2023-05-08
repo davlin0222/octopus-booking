@@ -25,7 +25,7 @@
             display: none;
         }
         &._cancel {
-            background: #c58002;
+            background: darken(colors.$selected-user-booking, 6%);
         }
     }
 }
@@ -43,7 +43,7 @@
         width: 100%;
         cursor: pointer;
         border: 3px solid #fff0e7;
-        background: #fbddd4;
+        background: colors.$accent;
         padding: 1rem;
     }
     &__input {

@@ -14,7 +14,7 @@
 .booking-form__submit {
   display: block;
   margin: auto;
-  background-color: #2959de;
+  background-color: #5681f7;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -25,7 +25,7 @@
   display: none;
 }
 .booking-form__submit._cancel {
-  background: #c58002;
+  background: #f99d23;
 }
 
 .invitations__list {
@@ -39,7 +39,7 @@
   width: 100%;
   cursor: pointer;
   border: 3px solid #fff0e7;
-  background: #fbddd4;
+  background: #faebc3;
   padding: 1rem;
 }
 .invitations__input {
