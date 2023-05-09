@@ -1,3 +1,5 @@
+@use "../../assets/css/colors";
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +8,8 @@
 
 html,
 body {
-    background: #121212;
-    color: #eee;
+    background: colors.$background;
+    color: #121212;
 }
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
@@ -22,7 +24,7 @@ body {
     &__menu {
         width: 200px;
         padding: 2rem;
-        background: #000;
+        background: #f8d496;
     }
     &__main {
         margin: auto;

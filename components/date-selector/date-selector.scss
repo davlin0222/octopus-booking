@@ -1,17 +1,20 @@
+@use "../../assets/css/colors";
+
 .date-selector {
-    background: #181c1c;
+    background: colors.$accent;
     width: 100%;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #4e5d5d;
+    border: 1px solid darken(colors.$accent, 5%);
     margin-bottom: 1rem;
+    border-radius: 10px;
 
     &__input {
         height: min-content;
-        background: #181c1c;
-        color: #eee;
+        background: colors.$accent;
+        color: #333333;
         border: none;
     }
 }

@@ -6,8 +6,8 @@
 
 html,
 body {
-  background: #121212;
-  color: #eee;
+  background: #fbf7ed;
+  color: #121212;
 }
 
 body {
@@ -22,7 +22,7 @@ body {
 .page__menu {
   width: 200px;
   padding: 2rem;
-  background: #000;
+  background: #f8d496;
 }
 .page__main {
   margin: auto;

@@ -1,17 +1,18 @@
 .date-selector {
-  background: #181c1c;
+  background: #faebc3;
   width: 100%;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #4e5d5d;
+  border: 1px solid #f8e3ab;
   margin-bottom: 1rem;
+  border-radius: 10px;
 }
 .date-selector__input {
   height: -moz-min-content;
   height: min-content;
-  background: #181c1c;
-  color: #eee;
+  background: #faebc3;
+  color: #333333;
   border: none;
 }/*# sourceMappingURL=date-selector.css.map */

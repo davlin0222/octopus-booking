@@ -1,9 +1,7 @@
 .booking-chart {
-  border-collapse: collapse;
   table-layout: fixed;
-  width: 420px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #181c1c;
+  border-spacing: 2px;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -12,63 +10,66 @@
   height: 1rem;
 }
 .booking-chart__header-cell, .booking-chart__row-header-cell, .booking-chart__booking-cell {
-  border: 1px solid #4e5d5d;
-  padding: 5px 0;
+  border-radius: 3px;
   text-align: center;
   overflow: hidden;
+  min-width: 22px;
+  font-weight: normal;
 }
 .booking-chart__header-cell:first-child {
   width: 45px;
 }
 .booking-chart__booking-cell {
   cursor: pointer;
-  background: #0daf38;
+  background: #f5e4b5;
+  height: 23px;
 }
 .booking-chart__booking-cell:active {
-  background: #0daa36;
+  background: #f4e2b1;
 }
 .booking-chart__booking-cell._available:hover {
-  background: #0ebd3d;
+  background: #f7e9c2;
 }
 .booking-chart__booking-cell._on-same-row {
   cursor: not-allowed;
 }
 .booking-chart__booking-cell._on-same-row:hover {
-  background: #0ebd3d;
+  background: #f7e9c2;
 }
 .booking-chart__booking-cell._selected {
-  background: #3260df;
+  background: #6088f7;
 }
 .booking-chart__booking-cell._selected:hover {
-  background: #3f6ae1;
+  background: #6f93f8;
 }
 .booking-chart__booking-cell._selected:active {
-  background: #2e5dde;
+  background: #5b84f7;
 }
 .booking-chart__booking-cell._booking {
-  background: #b11d1d;
+  cursor: inherit;
+  background: #c84a4a;
 }
 .booking-chart__booking-cell._booking:hover {
-  background: #be1f1f;
+  background: #cc5656;
 }
 .booking-chart__booking-cell._booking:active {
-  background: #ad1c1c;
+  background: #c74646;
 }
 .booking-chart__booking-cell._user-booking {
-  background: #761db1;
+  background: #a66eca;
 }
 .booking-chart__booking-cell._user-booking:hover {
-  background: #7f1fbe;
+  background: #ad79ce;
 }
 .booking-chart__booking-cell._user-booking:active {
-  background: #731cad;
+  background: #a46ac9;
 }
 .booking-chart__booking-cell._selected-user-booking {
-  background: #ffa600;
+  background: #faaa41;
 }
 .booking-chart__booking-cell._selected-user-booking:hover {
-  background: #ffab0f;
+  background: #fab150;
 }
 .booking-chart__booking-cell._selected-user-booking:active {
-  background: #faa300;
+  background: #faa83c;
 }/*# sourceMappingURL=booking-chart.css.map */
