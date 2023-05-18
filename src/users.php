@@ -49,7 +49,7 @@ function createUser($email, $password, $first_name, $last_name, $phone_number, $
  */
 function verifyUserCredentials($email, $password)
 {
-    $query = "SELECT user_id, email, password_hash, role_id FROM users WHERE email = ?";
+    $query = "SELECT user_id, email, password_hash, role_id, first_name, last_name FROM users WHERE email = ?";
     [$result] = executeQuery($query, "s", [$email]);
 
     $databaseUser = mysqli_fetch_assoc($result);
@@ -59,7 +59,9 @@ function verifyUserCredentials($email, $password)
     $responseUser = [
         "id" => $databaseUser["user_id"],
         "email" => $databaseUser["email"],
-        "role_id" => $databaseUser["role_id"]
+        "role_id" => $databaseUser["role_id"],
+        "firstName" => $databaseUser["first_name"],
+        "lastName" => $databaseUser["last_name"]
     ];
 
     // If the query returned a result, verify the password hash
