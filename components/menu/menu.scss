@@ -17,3 +17,20 @@
     user-select: none;
     font-family: inherit;
 }
+
+.menu {
+    position: relative;
+}
+
+.menu__container {
+    position: fixed;
+    width: 200px;
+    padding: 2rem;
+    background: #f8d496;
+    height: 100vh;
+}
+
+.profile-viewer-container {
+    position: absolute;
+    bottom: 20px;
+}
