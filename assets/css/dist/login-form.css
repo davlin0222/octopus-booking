@@ -1,7 +1,8 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  height: 500px;
+  overflow: hidden;
+  width: 500px;
 }
 
 .login-form__input-group {
@@ -25,4 +26,8 @@
   margin-top: 0.5rem;
   width: 100px;
   padding: 0.2rem;
+}
+
+.login-form__image {
+  width: 100%;
 }/*# sourceMappingURL=login-form.css.map */

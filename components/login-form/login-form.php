@@ -8,4 +8,5 @@
         <input class="login-form__input" type="password" id="password" name="password" required>
     </div>
     <button class="login-form__submit" type="submit">Login</button>
+    <img class="login-form__image" src="../assets/images/octopus-booking-logo.png" alt="An octopus doing a booking">
 </form>
