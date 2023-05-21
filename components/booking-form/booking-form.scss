@@ -4,11 +4,13 @@
     display: flex;
     &__invitations {
         margin-top: 1rem;
-        flex: 4;
+        flex: 1;
+        height: 300px;
+        overflow-x: scroll;
     }
     &__buttons {
         margin-top: 1rem;
-        flex: 3;
+        flex: 1;
     }
     &__submit {
         display: block;
@@ -29,14 +31,9 @@
 }
 
 .invitations {
-    &__header {
-        margin: 0.2rem 0.4rem;
-    }
     &__list {
         list-style-type: none;
         // border: 1px solid #daae9b;
-        height: 300px;
-        overflow-x: scroll;
     }
     &__list-item {
     }
