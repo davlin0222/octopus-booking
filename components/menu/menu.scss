@@ -24,7 +24,7 @@
 
 .menu__container {
     position: fixed;
-    width: 200px;
+    width: 280px;
     padding: 2rem;
     background: #f8d496;
     height: 100vh;
@@ -33,4 +33,5 @@
 .profile-viewer-container {
     position: absolute;
     bottom: 20px;
+    width: calc(280px - 4rem);
 }
