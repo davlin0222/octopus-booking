@@ -29,11 +29,15 @@ function sendEmail($recipient, $subject, $body)
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
+
         // set email content
-        $mail->setFrom($email["username"], 'Info');
-        $mail->addAddress($recipient, 'David');
         $mail->Subject = $subject;
         $mail->Body = $body;
+        $mail->setFrom($email["username"], 'Info');
+        // $mail->addAddress($recipient, 'Recipient');
+        //! Hard coded recipient address
+        $hardCodedEmail = $email["username"];
+        $mail->addAddress($hardCodedEmail, '');
 
         // send email
         $mail->send();

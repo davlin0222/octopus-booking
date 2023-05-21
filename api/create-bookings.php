@@ -27,9 +27,9 @@ try {
     $rawBooking = json_encode($requestBody["bookings"], JSON_PRETTY_PRINT);
     sendEmail($userEmail, "Booking confirmation for {$requestBody["date"]}", "Bookings in json format: \n{$rawBooking}");
 
-    foreach ($requestBody["invitations"] as $email) {
-        sendEmail($email, "Meeting invitation {$requestBody["date"]}", "Bookings in json format: \n{$rawBooking}");
-    }
+    // foreach ($requestBody["invitations"] as $email) {
+    //     sendEmail($email, "Meeting invitation {$requestBody["date"]}", "Bookings in json format: \n{$rawBooking}");
+    // }
 
     echo jsonResponse(true, ["insertedId" => $insertId]);
 } catch (\Throwable $exception) {
