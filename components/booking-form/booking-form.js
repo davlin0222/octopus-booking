@@ -33,6 +33,11 @@ async function bookButton_onClick(e) {
         selectedCell.classList.remove('_selected')
         selectedCell.classList.add('_user-booking')
     })
+
+    const invitationsListItemInputs = document.querySelectorAll('.invitations__input')
+    invitationsListItemInputs.forEach((input) => {
+        input.checked = false
+    })
 }
 
 async function cancelBookingsButton_onClick(e) {
