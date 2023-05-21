@@ -3,13 +3,11 @@
 }
 .booking-form__invitations {
   margin-top: 1rem;
-  flex: 1;
-  height: 300px;
-  overflow-x: scroll;
+  flex: 4;
 }
 .booking-form__buttons {
   margin-top: 1rem;
-  flex: 1;
+  flex: 3;
 }
 .booking-form__submit {
   display: block;
@@ -28,8 +26,13 @@
   background: #f99d23;
 }
 
+.invitations__header {
+  margin: 0.2rem 0.4rem;
+}
 .invitations__list {
   list-style-type: none;
+  height: 300px;
+  overflow-x: scroll;
 }
 .invitations__label {
   -webkit-user-select: none;
