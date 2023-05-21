@@ -11,11 +11,19 @@ function getUsers()
     $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     $formattedUsers = array_map(function ($user) {
+        $isLoggedIn = false;
+
+        if (session_status() == PHP_SESSION_NONE) session_start();
+        if ($_SESSION["user"]["id"] == $user["user_id"]) {
+            $isLoggedIn = true;
+        }
+
         return [
             "id" => $user["user_id"],
             "firstName" => $user["first_name"],
             "lastName" => $user["last_name"],
             "email" => $user["email"],
+            "isLoggedIn" => $isLoggedIn
         ];
     }, $users);
 

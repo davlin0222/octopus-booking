@@ -64,13 +64,13 @@ async function cancelBookingsButton_onClick(e) {
 
 async function renderInvitationList() {
     const users = await fetchUsers()
-    console.log(`renderInvitationList  users:`, users)
 
     const invitationsList = document.querySelector('.invitations__list')
 
     const template = document.querySelector('#invitation-item-template')
 
     users.forEach((user) => {
+        if (user.isLoggedIn) return
         const invitationListItem = template.content.cloneNode(true)
         const invitationInput = invitationListItem.querySelector('.invitations__input')
         invitationInput.value = user.email
