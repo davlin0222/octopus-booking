@@ -74,8 +74,10 @@ async function renderInvitationList() {
         const invitationListItem = template.content.cloneNode(true)
         const invitationInput = invitationListItem.querySelector('.invitations__input')
         invitationInput.value = user.email
-        const invitationSpan = invitationListItem.querySelector('.invitations__text')
-        invitationSpan.innerText = `${user.firstName} ${user.lastName}`
+        const invitationName = invitationListItem.querySelector('.invitations__name')
+        const invitationEmail = invitationListItem.querySelector('.invitations__email')
+        invitationName.innerText = `${user.firstName} ${user.lastName}`
+        invitationEmail.innerText = user.email
 
         invitationsList.appendChild(invitationListItem)
     })

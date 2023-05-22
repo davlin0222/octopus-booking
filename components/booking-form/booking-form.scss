@@ -42,7 +42,7 @@
     }
     &__label {
         user-select: none;
-        display: inline-block;
+        display: flex;
         width: 100%;
         cursor: pointer;
         border: 3px solid #fff0e7;
@@ -51,9 +51,17 @@
     }
     &__input {
         cursor: pointer;
+        // flex: 1;
     }
     &__text {
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
         user-select: text;
+        // flex: 1;
+    }
+    &__name {
+        margin-bottom: 0.4rem;
+    }
+    &__email {
+        opacity: 60%;
     }
 }

@@ -38,7 +38,7 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  display: inline-block;
+  display: flex;
   width: 100%;
   cursor: pointer;
   border: 3px solid #fff0e7;
@@ -49,8 +49,14 @@
   cursor: pointer;
 }
 .invitations__text {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   -webkit-user-select: text;
      -moz-user-select: text;
           user-select: text;
+}
+.invitations__name {
+  margin-bottom: 0.4rem;
+}
+.invitations__email {
+  opacity: 60%;
 }/*# sourceMappingURL=booking-form.css.map */
