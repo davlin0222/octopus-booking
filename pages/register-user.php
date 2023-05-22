@@ -17,9 +17,9 @@ Authorize::isAdmin(function () {
     <link rel="stylesheet" href="../assets/css/dist/main.css">
     <link rel="stylesheet" href="../assets/css/dist/menu.css">
     <link rel="stylesheet" href="../assets/css/dist/profile-viewer.css">
-    <link rel="stylesheet" href="../assets/css/dist/user-list.css">
+    <link rel="stylesheet" href="../assets/css/dist/user-registration-form.css">
     <script src="../components/menu/menu.js" defer type="module"></script>
-    <script src="../components/user-list/user-list.js" defer type="module"></script>
+    <script src="../components/user-registration-form/user-registration-form.js" defer type="module"></script>
     <title>Octopus Booking</title>
 </head>
 
@@ -28,11 +28,11 @@ Authorize::isAdmin(function () {
         <?php include("../components/menu/menu.php") ?>
 
         <main class="page__main">
-            <h2 class="heading">User Management</h2>
+            <h2 class="heading">Register a new user</h2>
             <div class="sub-page-nav">
-                <a href="register-user.php" class="sub-page-nav__link">Register a new user</a>
+                <a href="user-management.php" class="sub-page-nav__link">Go back</a>
             </div>
-            <?php include("../components/user-list/user-list.php") ?>
+            <?php include("../components/user-registration-form/user-registration-form.php") ?>
         </main>
     </div>
 </body>

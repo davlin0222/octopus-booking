@@ -33,3 +33,24 @@ export async function deleteUser(userId) {
         return null
     }
 }
+
+export async function createUser(userData) {
+    try {
+        const response = await fetch('../api/create-user.php', {
+            method: 'POST',
+            body: JSON.stringify(userData),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+
+        const text = await response.text()
+        console.log(`login  text:`, text)
+        const { success, errorMessage } = JSON.parse(text)
+        // console.log(`createBookings  errorMessage:`, errorMessage)
+        return success
+    } catch (error) {
+        console.error(error)
+        return false
+    }
+}
