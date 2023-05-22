@@ -2,8 +2,8 @@
 require("../src/authorization.php");
 require("../src/redirect.php");
 
-Authorize::isLoggedIn(function () {
-    redirect("login.php");
+Authorize::isAdmin(function () {
+    redirect("booking.php");
 });
 ?>
 
@@ -18,6 +18,7 @@ Authorize::isLoggedIn(function () {
     <link rel="stylesheet" href="../assets/css/dist/menu.css">
     <link rel="stylesheet" href="../assets/css/dist/profile-viewer.css">
     <script src="../components/menu/menu.js" defer type="module"></script>
+    <script src="../components/user-list/user-list.js" defer type="module"></script>
     <title>Octopus Booking</title>
 </head>
 
@@ -26,7 +27,9 @@ Authorize::isLoggedIn(function () {
         <?php include("../components/menu/menu.php") ?>
 
         <main class="page__main">
-            <h2>User Management</h2>
+            <h2 class="heading">User Management</h2>
+            <?php include("../components/user-list/user-list.php") ?>
+
         </main>
     </div>
 </body>
