@@ -33,10 +33,11 @@
         margin: 0.2rem 0.4rem;
     }
     &__list {
+        font-size: 0.9rem;
         list-style-type: none;
         // border: 1px solid #daae9b;
         height: 300px;
-        overflow-x: scroll;
+        overflow-y: scroll;
     }
     &__list-item {
     }

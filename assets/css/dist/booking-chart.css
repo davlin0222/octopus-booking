@@ -13,7 +13,7 @@
   border-radius: 3px;
   text-align: center;
   overflow: hidden;
-  min-width: 22px;
+  min-width: 25px;
   font-weight: normal;
 }
 .booking-chart__header-cell:first-child {
@@ -22,7 +22,7 @@
 .booking-chart__booking-cell {
   cursor: pointer;
   background: #f5e4b5;
-  height: 23px;
+  height: 26px;
 }
 .booking-chart__booking-cell:active {
   background: #f4e2b1;

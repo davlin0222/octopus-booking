@@ -10,8 +10,7 @@
   border-radius: 10px;
 }
 .date-selector__input {
-  height: -moz-min-content;
-  height: min-content;
+  height: 1rem;
   background: #faebc3;
   color: #333333;
   border: none;

@@ -30,9 +30,10 @@
   margin: 0.2rem 0.4rem;
 }
 .invitations__list {
+  font-size: 0.9rem;
   list-style-type: none;
   height: 300px;
-  overflow-x: scroll;
+  overflow-y: scroll;
 }
 .invitations__label {
   -webkit-user-select: none;
