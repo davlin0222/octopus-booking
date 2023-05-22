@@ -7,6 +7,7 @@ form.addEventListener('submit', async (e) => {
     const form = e.target
 
     const userData = {
+        roleId: form.role.value,
         firstName: form.firstName.value,
         lastName: form.lastName.value,
         email: form.email.value,

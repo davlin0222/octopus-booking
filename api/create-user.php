@@ -19,14 +19,13 @@ $email = filter_var($requestBody['email'], FILTER_SANITIZE_EMAIL);
 $password = filter_var($requestBody['password'], FILTER_SANITIZE_SPECIAL_CHARS);
 $firstName = filter_var($requestBody['firstName'], FILTER_SANITIZE_SPECIAL_CHARS);
 $lastName = filter_var($requestBody['lastName'], FILTER_SANITIZE_SPECIAL_CHARS);
-$roleId = filter_var($requestBody['role_id'], FILTER_SANITIZE_SPECIAL_CHARS);
+$roleId = filter_var($requestBody['roleId'], FILTER_SANITIZE_SPECIAL_CHARS);
 $phoneNumber = isset($requestBody['phoneNumber']) ? filter_var($requestBody['phoneNumber'], FILTER_SANITIZE_SPECIAL_CHARS) : "";
 
 try {
     // create the user with the extracted data
-    echo json_encode([$email, $first_name, $last_name, $password_hash, $phone_number, $role_id]);
-    // createUser($email, $password, $firstName, $lastName, $phoneNumber, $roleId);
-    // echo jsonResponse(true);
+    createUser($email, $password, $firstName, $lastName, $phoneNumber, $roleId);
+    echo jsonResponse(true);
 } catch (\Throwable $exception) {
     echo JsonErrorResponse($exception);
     exit();

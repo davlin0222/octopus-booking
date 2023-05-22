@@ -1,5 +1,12 @@
 <form class="user-registration-form">
     <div class="user-registration-form__field">
+        <label class="user-registration-form__label" for="role">User role</label>
+        <select class="user-registration-form__select" id="role" name="role" required>
+            <option value="2">Employee</option>
+            <option value="1">Admin</option>
+        </select>
+    </div>
+    <div class="user-registration-form__field">
         <label class="user-registration-form__label" for="first_name">First name</label>
         <input class="user-registration-form__input" type="text" id="first_name" name="firstName" required>
     </div>
