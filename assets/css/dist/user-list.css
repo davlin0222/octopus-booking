@@ -10,7 +10,7 @@
   justify-content: space-between;
 }
 .user-list__item + .user-list__item {
-  border-top: 2px solid #808080;
+  border-top: 2px solid #a0a0a0;
 }
 .user-list__name {
   margin-bottom: 0.4rem;

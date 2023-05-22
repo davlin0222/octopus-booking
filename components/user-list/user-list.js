@@ -27,9 +27,10 @@ function deleteButton_onClick(e) {
     const userListItem = e.target.parentNode.parentNode
     const userName = userListItem.querySelector('.user-list__name')
     const fullName = userName.innerText
-    // const confirmation = window.confirm(`Are you sure you want to delete ${fullName}?`)
-    // if (!confirmation) return
+    const confirmation = window.confirm(`Are you sure you want to delete ${fullName}?`)
+    if (!confirmation) return
 
     const userId = userListItem.dataset.userId
     const success = deleteUser(userId)
+    if (success) location.reload()
 }

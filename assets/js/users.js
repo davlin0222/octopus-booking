@@ -21,13 +21,13 @@ export async function deleteUser(userId) {
         const response = await fetch(`../api/delete-user.php?id=${userId}`)
 
         const text = await response.text()
-        console.log(`login  text:`, text)
-        // const { success, data } = JSON.parse(text)
+        // console.log(`login  text:`, text)
+        const { success } = JSON.parse(text)
         // console.log(`fetchBookings  data.userId:`, data.userId)
 
-        // if (!success) return
+        if (!success) return
 
-        // return data.users
+        return true
     } catch (error) {
         console.error(error)
         return null

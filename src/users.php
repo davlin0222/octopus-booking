@@ -81,7 +81,6 @@ function verifyUserCredentials($email, $password)
 
 function deleteUser($userId)
 {
-    echo $userId;
-    // $query = "DELETE";
-    // [$result] = executeQuery($query, "s", [$email]);
+    $query = "DELETE FROM users WHERE user_id = ?";
+    [$result] = executeQuery($query, "s", [$userId]);
 }
