@@ -93,8 +93,8 @@ function determineBookingCellState(thisBooking, bookingsOnThisRow, room) {
 
 function createBookingInformation(thisBooking) {
     if (!thisBooking) return ''
-    console.log(`createBookingInformation  thisBooking:`, thisBooking)
-    return `\n\nUser id: ${thisBooking.userId}`
+    const { firstName, lastName, email } = thisBooking.user
+    return `\n\n${firstName} ${lastName}\n${email}`
 }
 
 function createBookingCell(hour, room, bookingsOnThisRow) {
