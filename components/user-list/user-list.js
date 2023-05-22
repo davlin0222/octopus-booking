@@ -1,4 +1,4 @@
-import { fetchUsers } from '../../assets/js/users.js'
+import { fetchUsers, deleteUser } from '../../assets/js/users.js'
 
 renderUserList()
 
@@ -10,6 +10,8 @@ async function renderUserList() {
     users.forEach((user) => {
         if (user.isLoggedIn) return
         const userListItem = template.content.cloneNode(true)
+        const userListItemItem = userListItem.querySelector('.user-list__item')
+        userListItemItem.dataset.userId = user.id
         const userName = userListItem.querySelector('.user-list__name')
         const userEmail = userListItem.querySelector('.user-list__email')
         userName.innerText = `${user.firstName} ${user.lastName}`
@@ -22,14 +24,12 @@ async function renderUserList() {
 }
 
 function deleteButton_onClick(e) {
-    console.log(`deleteButton_onClick  e:`, e)
-
     const userListItem = e.target.parentNode.parentNode
     const userName = userListItem.querySelector('.user-list__name')
-    console.log(`deleteButton_onClick  userName:`, userName)
-
     const fullName = userName.innerText
-    console.log(`deleteButton_onClick  fullName:`, fullName)
-    const confirmation = window.confirm(`Are you sure you want to delete ${fullName}?`)
-    if (!confirmation) return
+    // const confirmation = window.confirm(`Are you sure you want to delete ${fullName}?`)
+    // if (!confirmation) return
+
+    const userId = userListItem.dataset.userId
+    const success = deleteUser(userId)
 }

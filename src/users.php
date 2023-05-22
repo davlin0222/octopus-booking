@@ -78,3 +78,10 @@ function verifyUserCredentials($email, $password)
     // If the query did not return a result or the password is invalid
     return [false]; // credentials are invalid
 }
+
+function deleteUser($userId)
+{
+    echo $userId;
+    // $query = "DELETE";
+    // [$result] = executeQuery($query, "s", [$email]);
+}
