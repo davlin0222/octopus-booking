@@ -6,9 +6,16 @@
                 <li class="menu__nav-list__item">
                     <a class="menu__nav-list__link" href="./booking.php">Booking chart</a>
                 </li>
-                <li class="menu__nav-list__item">
-                    <a class="menu__nav-list__link" href="./user-management.php">User management</a>
-                </li>
+                <?php
+                if (session_status() == PHP_SESSION_NONE) session_start();
+                if ($_SESSION["isAdmin"]) {
+                ?>
+                    <li class="menu__nav-list__item">
+                        <a class="menu__nav-list__link" href="./user-management.php">User management</a>
+                    </li>
+                <?php
+                }
+                ?>
                 <li class="menu__nav-list__item">
                     <button class="menu__nav-list__link" type="button" id="logout-button">Logout</button>
                 </li>
