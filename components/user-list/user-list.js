@@ -23,7 +23,7 @@ async function renderUserList() {
     })
 }
 
-function deleteButton_onClick(e) {
+async function deleteButton_onClick(e) {
     const userListItem = e.target.parentNode.parentNode
     const userName = userListItem.querySelector('.user-list__name')
     const fullName = userName.innerText
@@ -31,6 +31,6 @@ function deleteButton_onClick(e) {
     if (!confirmation) return
 
     const userId = userListItem.dataset.userId
-    const success = deleteUser(userId)
+    const success = await deleteUser(userId)
     if (success) location.reload()
 }
