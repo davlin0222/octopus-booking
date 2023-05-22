@@ -10,4 +10,10 @@
     &__item + &__item {
         border-top: 2px solid #808080;
     }
+    &__name {
+        margin-bottom: 0.4rem;
+    }
+    &__email {
+        opacity: 60%;
+    }
 }

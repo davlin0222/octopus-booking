@@ -9,4 +9,10 @@
 }
 .user-list__item + .user-list__item {
   border-top: 2px solid #808080;
+}
+.user-list__name {
+  margin-bottom: 0.4rem;
+}
+.user-list__email {
+  opacity: 60%;
 }/*# sourceMappingURL=user-list.css.map */
