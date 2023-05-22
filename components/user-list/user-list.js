@@ -15,6 +15,14 @@ async function renderUserList() {
         userName.innerText = `${user.firstName} ${user.lastName}`
         userEmail.innerText = user.email
 
+        const deleteButton = userListItem.querySelector('.user-list__delete-button')
+        deleteButton.addEventListener('click', deleteButton_onClick)
         userList.appendChild(userListItem)
     })
+}
+
+function deleteButton_onClick(e) {
+    console.log(`deleteButton_onClick  e:`, e)
+    const confirmation = window.confirm('Are you sure you want to delete?')
+    if (!confirmation) return
 }
