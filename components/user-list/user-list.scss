@@ -1,0 +1,32 @@
+.user-list {
+    list-style-type: none;
+    background: #faebc3;
+    padding: 0.6rem 1rem;
+    width: 400px;
+
+    &__item {
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item + &__item {
+        border-top: 2px solid #a0a0a0;
+    }
+    &__info {
+    }
+    &__name {
+        margin-bottom: 0.4rem;
+    }
+    &__email {
+        opacity: 60%;
+    }
+    &__buttons {
+        display: flex;
+        align-items: center;
+    }
+    &__delete-button {
+        flex: 1;
+        color: red;
+        cursor: pointer;
+    }
+}

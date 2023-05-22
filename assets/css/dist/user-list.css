@@ -1,0 +1,29 @@
+.user-list {
+  list-style-type: none;
+  background: #faebc3;
+  padding: 0.6rem 1rem;
+  width: 400px;
+}
+.user-list__item {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.user-list__item + .user-list__item {
+  border-top: 2px solid #a0a0a0;
+}
+.user-list__name {
+  margin-bottom: 0.4rem;
+}
+.user-list__email {
+  opacity: 60%;
+}
+.user-list__buttons {
+  display: flex;
+  align-items: center;
+}
+.user-list__delete-button {
+  flex: 1;
+  color: red;
+  cursor: pointer;
+}/*# sourceMappingURL=user-list.css.map */
