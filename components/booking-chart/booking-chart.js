@@ -81,8 +81,7 @@ function createTimeHeaderCell(rowHour) {
     return timeHeaderCell
 }
 
-function determineBookingCellState(bookingsOnThisRow, room) {
-    const thisBooking = bookingsOnThisRow.find((booking) => booking.roomId == room.id)
+function determineBookingCellState(thisBooking, bookingsOnThisRow, room) {
     const userBookingsOnThisRow = bookingsOnThisRow.filter(
         (bookingCell) => bookingCell.isUserBooking
     )
@@ -92,9 +91,21 @@ function determineBookingCellState(bookingsOnThisRow, room) {
     return '_available'
 }
 
+function createBookingInformation(thisBooking) {
+    if (!thisBooking) return ''
+    console.log(`createBookingInformation  thisBooking:`, thisBooking)
+    return `\n\nUser id: ${thisBooking.userId}`
+}
+
 function createBookingCell(hour, room, bookingsOnThisRow) {
+    const thisBooking = bookingsOnThisRow.find((booking) => booking.roomId == room.id)
+
     const bookingCell = document.createElement('td')
-    const bookingCellStatus = determineBookingCellState(bookingsOnThisRow, room)
+    const bookingCellStatus = determineBookingCellState(
+        thisBooking,
+        bookingsOnThisRow,
+        room
+    )
     bookingCell.classList.add('booking-chart__booking-cell')
     bookingCell.classList.add(bookingCellStatus)
 
@@ -102,7 +113,8 @@ function createBookingCell(hour, room, bookingsOnThisRow) {
     bookingCell.dataset.hour = hour
 
     const formattedClock = formatHourDuration(hour)
-    bookingCell.title = `Room ${room.id}\n${formattedClock}`
+    const bookingInformation = createBookingInformation(thisBooking)
+    bookingCell.title = `Room ${room.id}\n${formattedClock}${bookingInformation}`
 
     bookingCell.addEventListener('mousedown', bookingCell_onMouseDown)
     bookingCell.addEventListener('mouseover', bookingCell_onMouseOver)
