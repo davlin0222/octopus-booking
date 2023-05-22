@@ -17,6 +17,7 @@ Authorize::isAdmin(function () {
     <link rel="stylesheet" href="../assets/css/dist/main.css">
     <link rel="stylesheet" href="../assets/css/dist/menu.css">
     <link rel="stylesheet" href="../assets/css/dist/profile-viewer.css">
+    <link rel="stylesheet" href="../assets/css/dist/user-list.css">
     <script src="../components/menu/menu.js" defer type="module"></script>
     <script src="../components/user-list/user-list.js" defer type="module"></script>
     <title>Octopus Booking</title>

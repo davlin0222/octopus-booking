@@ -1,0 +1,12 @@
+.user-list {
+  list-style-type: none;
+  background: #faebc3;
+  padding: 0.6rem 1rem;
+  width: 400px;
+}
+.user-list__item {
+  padding: 1rem;
+}
+.user-list__item + .user-list__item {
+  border-top: 2px solid #808080;
+}/*# sourceMappingURL=user-list.css.map */

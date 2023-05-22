@@ -1,0 +1,13 @@
+.user-list {
+    list-style-type: none;
+    background: #faebc3;
+    padding: 0.6rem 1rem;
+    width: 400px;
+
+    &__item {
+        padding: 1rem;
+    }
+    &__item + &__item {
+        border-top: 2px solid #808080;
+    }
+}
