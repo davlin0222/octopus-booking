@@ -5,6 +5,10 @@ require("../src/redirect.php");
 Authorize::isLoggedIn(function () {
     redirect("login.php");
 });
+
+$pageConfig = [
+    "activePage" => "booking"
+]
 ?>
 
 <!DOCTYPE html>

@@ -5,6 +5,10 @@ require("../src/redirect.php");
 Authorize::isAdmin(function () {
     redirect("booking.php");
 });
+
+$pageConfig = [
+    "activePage" => "user-management"
+]
 ?>
 
 <!DOCTYPE html>

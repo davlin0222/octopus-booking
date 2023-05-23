@@ -5,6 +5,9 @@
 .menu__nav-list__item {
   margin-bottom: 1rem;
 }
+.menu__nav-list__item--active {
+  font-weight: bold;
+}
 
 .menu__nav-list__link {
   color: rgb(0, 0, 0);
