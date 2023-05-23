@@ -16,15 +16,22 @@ body {
 }
 
 .page {
-  display: flex;
-  height: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-areas: "menu main" "menu footer";
+  grid-template-columns: 280px auto;
+  grid-template-rows: auto min-content;
 }
 .page__menu {
-  width: 280px;
+  grid-area: menu;
 }
 .page__main {
-  margin: auto;
+  grid-area: main;
+  margin: 0 auto;
   padding: 4rem 2rem;
+}
+.page__footer {
+  grid-area: footer;
 }
 
 .heading {

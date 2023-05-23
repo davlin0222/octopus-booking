@@ -5,6 +5,9 @@
 .menu__nav-list__item {
   margin-bottom: 1rem;
 }
+.menu__nav-list__item--active {
+  font-weight: bold;
+}
 
 .menu__nav-list__link {
   color: rgb(0, 0, 0);
@@ -30,7 +33,7 @@
   position: fixed;
   width: 280px;
   padding: 2rem;
-  background: #f8d496;
+  background: #f5cc85;
   height: 100vh;
 }
 

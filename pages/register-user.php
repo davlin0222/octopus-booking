@@ -5,6 +5,10 @@ require("../src/redirect.php");
 Authorize::isAdmin(function () {
     redirect("booking.php");
 });
+
+$pageConfig = [
+    "activePage" => "user-management"
+]
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +22,7 @@ Authorize::isAdmin(function () {
     <link rel="stylesheet" href="../assets/css/dist/menu.css">
     <link rel="stylesheet" href="../assets/css/dist/profile-viewer.css">
     <link rel="stylesheet" href="../assets/css/dist/user-registration-form.css">
+    <link rel="stylesheet" href="../assets/css/dist/footer.css">
     <script src="../components/menu/menu.js" defer type="module"></script>
     <script src="../components/user-registration-form/user-registration-form.js" defer type="module"></script>
     <title>Octopus Booking</title>
@@ -34,6 +39,8 @@ Authorize::isAdmin(function () {
             </div>
             <?php include("../components/user-registration-form/user-registration-form.php") ?>
         </main>
+
+        <?php include("../components/footer/footer.php") ?>
     </div>
 </body>
 
