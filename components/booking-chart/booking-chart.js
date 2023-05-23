@@ -5,6 +5,7 @@ import {
 } from '../../assets/js/time-utils.js'
 import { fetchRooms } from './rooms.js'
 import { fetchBookings } from '../../assets/js/bookings.js'
+import { updateSelectedTimes } from '../booking-form/selected-times/selected-times.js'
 
 const state = { mouseDown: false, selectionState: 'neither' }
 document.addEventListener('mouseup', () => {
@@ -147,7 +148,8 @@ function toggleSelection(bookingCell) {
     toggleTheCell(bookingCell)
     updateSelectionState()
     toggleSubmitButton()
-    console.log(`toggleCellSelect  state.selectionState:`, state.selectionState)
+
+    updateSelectedTimes()
 }
 function toggleSubmitButton() {
     if (state.selectionState == 'cancel') {
@@ -226,9 +228,9 @@ function updateSelectionState() {
     const selectedUserBookings = document.querySelectorAll(
         '.booking-chart__booking-cell._selected-user-booking'
     )
-    console.log(`updateSelectionState  selectedUserBookings:`, selectedUserBookings)
+    // console.log(`updateSelectionState  selectedUserBookings:`, selectedUserBookings)
     const selected = document.querySelectorAll('.booking-chart__booking-cell._selected')
-    console.log(`updateSelectionState  selected:`, selected)
+    // console.log(`updateSelectionState  selected:`, selected)
     if (selectedUserBookings.length > 0) {
         state.selectionState = 'cancel'
         return
