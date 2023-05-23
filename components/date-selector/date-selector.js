@@ -31,8 +31,7 @@ document.addEventListener('keydown', async (e) => {
     selectedDate.setDate(selectedDate.getDate() + changeNumber)
     const newDateString = formatDate(selectedDate)
     dateSelectorInput.value = newDateString
-
-    await updateDate(dateString)
+    await updateDate(newDateString)
 })
 
 function getChangeNumber(key) {
