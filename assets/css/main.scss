@@ -18,15 +18,25 @@ body {
 }
 
 .page {
-    display: flex;
     height: 100%;
+    display: grid;
+    grid-template-areas:
+        'menu main'
+        'menu footer';
+    grid-template-columns: 280px auto;
+    grid-template-rows: auto 1fr;
 
     &__menu {
-        width: 280px;
+        grid-area: menu;
     }
     &__main {
+        grid-area: main;
         margin: auto;
         padding: 4rem 2rem;
+    }
+    &__footer {
+        grid-area: footer;
+        background: red;
     }
 }
 

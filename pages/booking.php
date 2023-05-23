@@ -36,6 +36,8 @@ Authorize::isLoggedIn(function () {
             <?php include("../components/booking-chart/booking-chart.php") ?>
             <?php include("../components/booking-form/booking-form.php") ?>
         </main>
+
+        <?php include("../components/footer/footer.php") ?>
     </div>
 </body>
 
