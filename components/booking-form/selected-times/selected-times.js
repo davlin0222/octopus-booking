@@ -11,7 +11,7 @@ export function updateSelectedTimes() {
     }))
 
     const aggregatedSelectedTimes = aggregateTimes(selectedTimes)
-    console.log(`updateSelectedTimes  aggregatedSelectedTimes:`, aggregatedSelectedTimes)
+    // console.log(`updateSelectedTimes  aggregatedSelectedTimes:`, aggregatedSelectedTimes)
     renderSelectedTimesSummery(aggregatedSelectedTimes)
 }
 

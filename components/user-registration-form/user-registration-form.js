@@ -13,7 +13,7 @@ form.addEventListener('submit', async (e) => {
         email: form.email.value,
         password: form.password.value,
     }
-    console.log(`form.addEventListener  userData:`, userData)
+    // console.log(`form.addEventListener  userData:`, userData)
 
     const success = await createUser(userData)
 

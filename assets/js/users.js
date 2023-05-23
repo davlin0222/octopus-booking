@@ -45,7 +45,7 @@ export async function createUser(userData) {
         })
 
         const text = await response.text()
-        console.log(`login  text:`, text)
+        // console.log(`login  text:`, text)
         const { success, errorMessage } = JSON.parse(text)
         // console.log(`createBookings  errorMessage:`, errorMessage)
         return success
