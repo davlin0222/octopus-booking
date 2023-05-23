@@ -16,23 +16,22 @@ body {
 }
 
 .page {
-  height: 100%;
+  height: 100vh;
   display: grid;
   grid-template-areas: "menu main" "menu footer";
   grid-template-columns: 280px auto;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto min-content;
 }
 .page__menu {
   grid-area: menu;
 }
 .page__main {
   grid-area: main;
-  margin: auto;
+  margin: 0 auto;
   padding: 4rem 2rem;
 }
 .page__footer {
   grid-area: footer;
-  background: red;
 }
 
 .heading {

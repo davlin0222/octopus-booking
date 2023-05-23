@@ -20,6 +20,7 @@ Authorize::isLoggedIn(function () {
     <link rel="stylesheet" href="../assets/css/dist/menu.css">
     <link rel="stylesheet" href="../assets/css/dist/date-selector.css">
     <link rel="stylesheet" href="../assets/css/dist/profile-viewer.css">
+    <link rel="stylesheet" href="../assets/css/dist/footer.css">
     <script src="../components/booking-chart/booking-chart.js" defer type="module"></script>
     <script src="../components/booking-form/booking-form.js" defer type="module"></script>
     <script src="../components/menu/menu.js" defer type="module"></script>
