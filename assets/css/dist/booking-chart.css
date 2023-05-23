@@ -21,20 +21,27 @@
 }
 .booking-chart__booking-cell {
   cursor: pointer;
-  background: #f5e4b5;
+  background: #f5e0a6;
   height: 26px;
 }
 .booking-chart__booking-cell:active {
-  background: #f4e2b1;
+  background: #f4dea1;
 }
 .booking-chart__booking-cell._available:hover {
-  background: #f7e9c2;
+  background: #f7e5b4;
+}
+.booking-chart__booking-cell._past {
+  background: #d6c8b6;
+  cursor: not-allowed;
+}
+.booking-chart__booking-cell._past:hover {
+  background: #f7e5b4;
 }
 .booking-chart__booking-cell._on-same-row {
   cursor: not-allowed;
 }
 .booking-chart__booking-cell._on-same-row:hover {
-  background: #f7e9c2;
+  background: #f7e5b4;
 }
 .booking-chart__booking-cell._selected {
   background: #6088f7;

@@ -20,7 +20,13 @@ await renderBookingChart(dateString)
 export async function renderBookingChart(dateString) {
     const bookings = await fetchBookings(dateString)
     const tableHeader = createTableHeader(rooms)
-    const tableBody = createTableBody({ rooms, firstHour: 6, lastHour: 22, bookings })
+    const tableBody = createTableBody({
+        rooms,
+        firstHour: 6,
+        lastHour: 22,
+        bookings,
+        dateString,
+    })
 
     const bookingChart = document.querySelector('#booking-chart')
     bookingChart.innerHTML = ''
@@ -48,24 +54,29 @@ function createTableHeader(rooms) {
     return tableHeader
 }
 
-function createTableBody({ rooms, firstHour, lastHour, bookings }) {
+function createTableBody({ rooms, firstHour, lastHour, bookings, dateString }) {
     const tableBody = document.createElement('tbody')
 
     for (let rowHour = firstHour; rowHour <= lastHour; rowHour++) {
-        const row = createRow(rowHour, rooms, bookings)
+        const now = Date.now()
+        const date = new Date(dateString)
+        date.setHours(rowHour + 1)
+        const isPast = date < now
+
+        const row = createRow(rowHour, rooms, bookings, isPast)
         tableBody.appendChild(row)
     }
     return tableBody
 }
 
-function createRow(rowHour, rooms, bookings) {
+function createRow(rowHour, rooms, bookings, isPast) {
     const bookingsOnThisRow = bookings.filter((booking) => booking.hour == rowHour)
 
     const row = document.createElement('tr')
     row.classList.add('booking-chart__row')
     row.appendChild(createTimeHeaderCell(rowHour))
     rooms.forEach((room) => {
-        const bookingCell = createBookingCell(rowHour, room, bookingsOnThisRow)
+        const bookingCell = createBookingCell(rowHour, room, bookingsOnThisRow, isPast)
         row.appendChild(bookingCell)
     })
     return row
@@ -81,12 +92,13 @@ function createTimeHeaderCell(rowHour) {
     return timeHeaderCell
 }
 
-function determineBookingCellState(thisBooking, bookingsOnThisRow, room) {
+function determineBookingCellState(thisBooking, bookingsOnThisRow, room, isPast) {
     const userBookingsOnThisRow = bookingsOnThisRow.filter(
         (bookingCell) => bookingCell.isUserBooking
     )
     if (thisBooking?.isUserBooking) return '_user-booking'
     if (thisBooking) return '_booking'
+    if (isPast) return '_past'
     if (userBookingsOnThisRow.length > 0) return '_on-same-row'
     return '_available'
 }
@@ -97,14 +109,15 @@ function createBookingInformation(thisBooking) {
     return `\n\n${firstName} ${lastName}\n${email}`
 }
 
-function createBookingCell(hour, room, bookingsOnThisRow) {
+function createBookingCell(hour, room, bookingsOnThisRow, isPast) {
     const thisBooking = bookingsOnThisRow.find((booking) => booking.roomId == room.id)
 
     const bookingCell = document.createElement('td')
     const bookingCellStatus = determineBookingCellState(
         thisBooking,
         bookingsOnThisRow,
-        room
+        room,
+        isPast
     )
     bookingCell.classList.add('booking-chart__booking-cell')
     bookingCell.classList.add(bookingCellStatus)
@@ -150,6 +163,7 @@ function toggleSubmitButton() {
 
 function toggleTheCell(bookingCell) {
     if (bookingCell.classList.contains('_booking')) return
+    if (bookingCell.classList.contains('_past')) return
     if (bookingCell.classList.contains('_on-same-row')) return
 
     if (state.selectionState == 'cancel') return userBookingToggle(bookingCell)
