@@ -1,3 +1,4 @@
 <div class="selected-times">
-    test
+    <h4>Selected</h4>
+    <div id="selectedItems"></div>
 </div>
