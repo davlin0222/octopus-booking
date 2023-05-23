@@ -1,0 +1,52 @@
+.invitations__header {
+  margin: 0.2rem 0.4rem;
+}
+.invitations__list {
+  font-size: 0.9rem;
+  list-style-type: none;
+  height: 300px;
+  overflow-y: scroll;
+}
+.invitations__label {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  border: 3px solid #fff0e7;
+  background: #faebc3;
+  padding: 1rem;
+}
+.invitations__input {
+  cursor: pointer;
+}
+.invitations__text {
+  padding: 0.5rem 1rem;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+          user-select: text;
+}
+.invitations__name {
+  margin-bottom: 0.4rem;
+}
+.invitations__email {
+  opacity: 60%;
+}
+
+.invitations__list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.invitations__list::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.invitations__list::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.invitations__list::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}/*# sourceMappingURL=invitations-list.css.map */
