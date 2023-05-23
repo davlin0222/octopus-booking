@@ -31,11 +31,11 @@
   background: #f7e5b4;
 }
 .booking-chart__booking-cell._past {
-  background: #d6c8b6;
+  background: #e4ce91;
   cursor: not-allowed;
 }
 .booking-chart__booking-cell._past:hover {
-  background: #dccfc0;
+  background: #e7d39d;
 }
 .booking-chart__booking-cell._on-same-row {
   cursor: not-allowed;
