@@ -7,5 +7,6 @@
     <div class="booking-form__buttons">
         <input id="book-button" type="submit" value="Confirm booking" class="booking-form__submit _book">
         <input id="cancel-bookings-button" type="submit" value="Cancel times" class="booking-form__submit _cancel _hidden">
+        <?php include("selected-times/selected-times.php"); ?>
     </div>
 </form>

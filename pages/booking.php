@@ -26,11 +26,13 @@ $pageConfig = [
     <link rel="stylesheet" href="../assets/css/dist/profile-viewer.css">
     <link rel="stylesheet" href="../assets/css/dist/footer.css">
     <link rel="stylesheet" href="../assets/css/dist/invitations-list.css">
+    <link rel="stylesheet" href="../assets/css/dist/selected-times.css">
     <script src="../components/booking-chart/booking-chart.js" defer type="module"></script>
     <script src="../components/booking-form/booking-form.js" defer type="module"></script>
     <script src="../components/menu/menu.js" defer type="module"></script>
     <script src="../components/date-selector/date-selector.js" defer type="module"></script>
     <script src="../components/booking-form/invitations-list/invitations-list.js" defer type="module"></script>
+    <script src="../components/booking-form/selected-times/selected-times.js" defer type="module"></script>
     <title>Octopus Booking</title>
 </head>
 
