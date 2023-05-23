@@ -20,5 +20,30 @@ async function renderInvitationList() {
         invitationEmail.innerText = user.email
 
         invitationsList.appendChild(invitationListItem)
+
+        // invitationInput.addEventListener('click', invitationInput_onClick)
     })
 }
+
+// function invitationInput_onClick(e) {
+//     const invitationsList = document.querySelector('.invitations__list')
+//     console.log(`invitationInput_onClick  invitationsList:`, invitationsList)
+// const children = Array.from(invitationsList.querySelectorAll("."))
+
+// children.sort((a, b) => {
+//     console.log(`children.sort  b:`, b)
+//     console.log(`children.sort  a:`, a)
+//     // const aChecked = a.querySelector('input[type="checkbox"]').checked
+//     // const bChecked = b.querySelector('input[type="checkbox"]').checked
+
+//     // if (aChecked && !bChecked) {
+//     //     return -1 // a comes before b
+//     // } else if (!aChecked && bChecked) {
+//     //     return 1 // b comes before a
+//     // } else {
+//     //     return 0 // maintain the current order
+//     // }
+// })
+
+// children.forEach((child) => invitationsList.appendChild(child))
+// }

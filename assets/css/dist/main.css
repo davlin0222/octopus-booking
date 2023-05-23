@@ -16,7 +16,7 @@ body {
 }
 
 .page {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-areas: "menu main" "menu footer";
   grid-template-columns: 280px auto;
