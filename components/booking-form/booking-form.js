@@ -73,7 +73,7 @@ async function renderInvitationList() {
         if (user.isLoggedIn) return
         const invitationListItem = template.content.cloneNode(true)
         const invitationInput = invitationListItem.querySelector('.invitations__input')
-        invitationInput.value = user.email
+        invitationInput.value = user.id
         const invitationName = invitationListItem.querySelector('.invitations__name')
         const invitationEmail = invitationListItem.querySelector('.invitations__email')
         invitationName.innerText = `${user.firstName} ${user.lastName}`
@@ -85,6 +85,8 @@ async function renderInvitationList() {
 
 function getInvitations() {
     const checkedBoxes = document.querySelectorAll('input[name="recipients[]"]:checked')
-    const invitations = Array.from(checkedBoxes).map((checkbox) => checkbox.value)
+    const invitations = Array.from(checkedBoxes).map((checkbox) => ({
+        userId: checkbox.value,
+    }))
     return invitations
 }

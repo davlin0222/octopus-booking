@@ -13,8 +13,6 @@ function getBookings($dateString)
 
     $bookings = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-
-
     $formattedBookings = array_map(function ($booking) {
         $user = [
             "firstName" => $booking["first_name"],
@@ -32,7 +30,7 @@ function getBookings($dateString)
     return $formattedBookings;
 }
 
-function createBookings($bookings, $date)
+function createBookings($bookings, $date, $invitations)
 {
     if (session_status() == PHP_SESSION_NONE) session_start();
     $userId = $_SESSION["user"]["id"];
@@ -43,12 +41,16 @@ function createBookings($bookings, $date)
 
     if ($hasDuplicateHours) return;
 
-    $query = "INSERT INTO bookings (user_id) values (?)";
-    [$result, $bookingId] = executeQuery($query, "s", [$userId]);
-    $query = "INSERT INTO booking_times (booking_id, room_id, date, hour) values (?,?,?,?)";
+    $bookingsQuery = "INSERT INTO bookings (user_id) values (?)";
+    [$result, $bookingId] = executeQuery($bookingsQuery, "s", [$userId]);
+    $bookingTimesQuery = "INSERT INTO booking_times (booking_id, room_id, date, hour) values (?,?,?,?)";
+    $bookingInvitationsQuery = "INSERT INTO booking_invitations (booking_id, user_id) values (?,?)";
 
     foreach ($bookings as $booking) {
-        [$result] = executeQuery($query, "ssss", [$bookingId, $booking["roomId"], $date, $booking["hour"]]);
+        [$result] = executeQuery($bookingTimesQuery, "ssss", [$bookingId, $booking["roomId"], $date, $booking["hour"]]);
+    }
+    foreach ($invitations as $invitation) {
+        [$result] = executeQuery($bookingInvitationsQuery, "ss", [$bookingId, $invitation["userId"]]);
     }
 
     return $bookingId;

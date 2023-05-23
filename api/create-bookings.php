@@ -19,7 +19,7 @@ $requestBody = json_decode(file_get_contents('php://input'), true);
 
 try {
     // create the user with the extracted data
-    $insertId = createBookings($requestBody["bookings"], $requestBody["date"]);
+    $insertId = createBookings($requestBody["bookings"], $requestBody["date"], $requestBody["invitations"]);
 
     if (session_status() == PHP_SESSION_NONE) session_start();
     $userEmail = $_SESSION["user"]["email"];

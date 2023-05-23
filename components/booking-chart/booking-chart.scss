@@ -48,7 +48,7 @@
             background: colors.$past;
             cursor: not-allowed;
             &:hover {
-                background: lighten(colors.$available, 3%);
+                background: lighten(colors.$past, 3%);
             }
         }
         &._on-same-row {
