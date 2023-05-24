@@ -35,7 +35,7 @@ To run Octopus Booking on your local machine, follow these steps:
 
 5. Run the SQL dump stored in the database-setup.sql file which is placed in the root of the repository.
 
-    - If you receive the error "No database selected" add the use database statement before the rest of the SQL statements.
+    - If you receive the error "No database selected", add the _use database statement_ before the rest of the SQL statements.
         ```sql
         USE octopus_booking;
         -- Plus the rest of the SQL dump from database.sql underneath.
@@ -59,6 +59,10 @@ To run Octopus Booking on your local machine, follow these steps:
     ```
 
 7. Open a web browser and if it's not at another path navigate to `http://localhost/octopus-booking/` to access the Octopus Booking application. Now everything should be running smoothly.
+
+### Additional information
+
+I've used sassy css during the development, which transcompiles into css. Each component in `/components` has its own `.scss` file which transcompiles into `.css` files placed in `/assets/css/dist`. This is the reason for the configurations in the `/.vscode/settings.json` file, because I've been using vscode's [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass) during the development of this project.
 
 ## License
 
