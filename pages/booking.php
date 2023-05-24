@@ -8,7 +8,7 @@ Authorize::isLoggedIn(function () {
 
 $pageConfig = [
     "activePage" => "booking"
-]
+];
 ?>
 
 <!DOCTYPE html>

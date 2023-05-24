@@ -8,7 +8,7 @@ Authorize::isAdmin(function () {
 
 $pageConfig = [
     "activePage" => "user-management"
-]
+];
 ?>
 
 <!DOCTYPE html>
