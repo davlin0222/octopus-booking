@@ -26,9 +26,17 @@ if (!isset($pageConfig["activePage"])) {
                 ">
                         <a class="menu__nav-list__link" href="./user-management.php">User management</a>
                     </li>
+                    <li class="menu__nav-list__item
+                <?php
+                    if ($pageConfig["activePage"] == "statistics") echo "menu__nav-list__item--active";
+                ?>
+                ">
+                        <a class="menu__nav-list__link" href="./statistics.php">Statistics</a>
+                    </li>
                 <?php
                 }
                 ?>
+                
                 <li class="menu__nav-list__item">
                     <button class="menu__nav-list__link" type="button" id="logout-button">Logout</button>
                 </li>
