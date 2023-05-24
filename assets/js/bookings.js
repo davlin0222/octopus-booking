@@ -69,9 +69,11 @@ async function cancelBookings(selectedBookings, selectedDate) {
     }
 }
 
-async function fetchBookingStatistics() {
+async function fetchBookingStatistics(startDate, endDate) {
     try {
-        const response = await fetch(`../api/fetch-booking-statistics.php`)
+        const response = await fetch(
+            `../api/fetch-booking-statistics.php?start-date=${startDate}&end-date=${endDate}`
+        )
 
         const text = await response.text()
         console.log(`login  text:`, text)

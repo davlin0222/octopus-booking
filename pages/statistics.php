@@ -21,7 +21,7 @@ $pageConfig = [
     <link rel="stylesheet" href="../assets/css/dist/main.css">
     <link rel="stylesheet" href="../assets/css/dist/menu.css">
     <link rel="stylesheet" href="../assets/css/dist/profile-viewer.css">
-    <link rel="stylesheet" href="../assets/css/dist/user-list.css">
+    <link rel="stylesheet" href="../assets/css/dist/statistics.css">
     <link rel="stylesheet" href="../assets/css/dist/footer.css">
     <script src="../components/menu/menu.js" defer type="module"></script>
     <script src="../components/statistics/statistics.js" defer type="module"></script>

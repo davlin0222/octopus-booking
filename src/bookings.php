@@ -67,13 +67,34 @@ function cancelBookings($bookings, $date)
     return $result;
 }
 
-function getBookingStatistics()
+function getBookingStatistics($startDate, $endDate)
 {
+    $totalNumberOfHoursBooked = getTotalNumberOfHoursBooked();
+    $totalNumberOfHoursBookedInTimeSpan = getTotalNumberOfHoursBookedInTimeSpan($startDate, $endDate);
+
+    return [
+        "totalNumberOfHoursBooked" => $totalNumberOfHoursBooked,
+        "totalNumberOfHoursBookedInTimeSpan" => $totalNumberOfHoursBookedInTimeSpan
+    ];
+}
+
+function getTotalNumberOfHoursBooked()
+{
+
     $query =
         "SELECT COUNT(*) AS row_count FROM booking_times;";
     [$result] = executeQuery($query);
 
     $totalNumberOfHoursBooked = mysqli_fetch_assoc($result)["row_count"];
+    return $totalNumberOfHoursBooked;
+}
 
-    return ["totalNumberOfHoursBooked" => $totalNumberOfHoursBooked];
+function getTotalNumberOfHoursBookedInTimeSpan($startDate, $endDate)
+{
+    $query =
+        "SELECT COUNT(*) AS row_count FROM booking_times WHERE date >= ? and date <= ?;";
+    [$result] = executeQuery($query, "ss", [$startDate, $endDate]);
+
+    $totalNumberOfHoursBookedInTimeSpan = mysqli_fetch_assoc($result)["row_count"];
+    return $totalNumberOfHoursBookedInTimeSpan;
 }

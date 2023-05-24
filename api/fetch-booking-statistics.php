@@ -11,7 +11,10 @@ Authorize::isAdmin(function () {
     exit();
 });
 
-$bookingStatistics = getBookingStatistics();
+$startDate = $_GET["start-date"];
+$endDate = $_GET["end-date"];
+
+$bookingStatistics = getBookingStatistics($startDate, $endDate);
 
 echo jsonResponse(
     true,
