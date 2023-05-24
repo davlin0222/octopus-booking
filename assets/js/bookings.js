@@ -69,4 +69,23 @@ async function cancelBookings(selectedBookings, selectedDate) {
     }
 }
 
-export { fetchBookings, createBookings, cancelBookings }
+async function fetchBookingStatistics() {
+    try {
+        const response = await fetch(`../api/fetch-booking-statistics.php`)
+
+        const text = await response.text()
+        console.log(`login  text:`, text)
+        const { success, data } = JSON.parse(text)
+        // console.log(`fetchBookings  data.userId:`, data.userId)
+
+        if (!success) return
+
+        const { bookingStatistics } = data
+        return bookingStatistics
+    } catch (error) {
+        console.error(error)
+        return null
+    }
+}
+
+export { fetchBookings, createBookings, cancelBookings, fetchBookingStatistics }
