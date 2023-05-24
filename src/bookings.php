@@ -44,7 +44,7 @@ function createBookings($bookings, $date, $invitations)
     $bookingsQuery = "INSERT INTO bookings (user_id) values (?)";
     $bookingTimesQuery = "INSERT INTO booking_times (booking_id, room_id, date, hour) values (?,?,?,?)";
     $bookingInvitationsQuery = "INSERT INTO booking_invitations (booking_id, user_id) values (?,?)";
-    
+
     [$result, $bookingId] = executeQuery($bookingsQuery, "s", [$userId]);
 
     foreach ($bookings as $booking) {
@@ -65,4 +65,15 @@ function cancelBookings($bookings, $date)
         [$result] = executeQuery($query, "sss", [$date, $booking["hour"], $booking["roomId"]]);
     }
     return $result;
+}
+
+function getBookingStatistics()
+{
+    $query =
+        "SELECT COUNT(*) AS row_count FROM booking_times;";
+    [$result] = executeQuery($query);
+
+    $totalNumberOfHoursBooked = mysqli_fetch_assoc($result)["row_count"];
+
+    return ["totalNumberOfHoursBooked" => $totalNumberOfHoursBooked];
 }

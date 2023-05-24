@@ -11,9 +11,9 @@ Authorize::isAdmin(function () {
     exit();
 });
 
-$statistics = ["totalHoursBooked" => "test number"];
+$bookingStatistics = getBookingStatistics();
 
 echo jsonResponse(
     true,
-    ["bookingStatistics" => $statistics]
+    ["bookingStatistics" => $bookingStatistics]
 );
