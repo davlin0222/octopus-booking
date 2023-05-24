@@ -42,9 +42,10 @@ function createBookings($bookings, $date, $invitations)
     if ($hasDuplicateHours) return;
 
     $bookingsQuery = "INSERT INTO bookings (user_id) values (?)";
-    [$result, $bookingId] = executeQuery($bookingsQuery, "s", [$userId]);
     $bookingTimesQuery = "INSERT INTO booking_times (booking_id, room_id, date, hour) values (?,?,?,?)";
     $bookingInvitationsQuery = "INSERT INTO booking_invitations (booking_id, user_id) values (?,?)";
+    
+    [$result, $bookingId] = executeQuery($bookingsQuery, "s", [$userId]);
 
     foreach ($bookings as $booking) {
         [$result] = executeQuery($bookingTimesQuery, "ssss", [$bookingId, $booking["roomId"], $date, $booking["hour"]]);
