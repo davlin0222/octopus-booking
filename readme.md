@@ -4,14 +4,11 @@ Octopus Booking is a project developed for a school assignment during the first 
 
 ## Getting Started
 
+_A tutorial for running the project locally._
+
 ### Prerequisites
 
-Before getting started with Octopus Booking, make sure you have the following prerequisites installed on your system:
-
--   [XAMPP](https://www.apachefriends.org/index.html): XAMPP is a free and open-source cross-platform web server solution that includes Apache, MySQL, PHP, and Perl.
--   [Apache](https://httpd.apache.org/): Apache is a widely-used web server software.
--   [MySQL](https://www.mysql.com/): MySQL is an open-source relational database management system.
--   [PHP](https://www.php.net/): PHP is a popular server-side scripting language.
+Before you can follow the guide, ensure that you have XAMPP installed or a similar local web server environment.
 
 ### Guide
 
@@ -20,14 +17,16 @@ To run Octopus Booking on your local machine, follow these steps:
 1. Clone the Octopus Booking repository to your local machine.
 
     ```shell
-    git clone https://github.com/your-username/octopus-booking.git
+    git clone https://github.com/davlin0222/octopus-booking.git
     ```
 
 2. Start XAMPP and ensure that the Apache and MySQL services are running.
 
 3. Open a web browser and navigate to `http://localhost/phpmyadmin/` to access the phpMyAdmin interface.
 
-4. Create a new MySQL database for Octopus Booking. You can choose any desired name for your database.
+4. Create a new MySQL database for Octopus Booking.
+
+---
 
 5. Import the database schema and data by executing the SQL script provided in the `database` folder of the project.
 
