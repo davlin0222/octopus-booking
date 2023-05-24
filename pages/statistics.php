@@ -24,6 +24,7 @@ $pageConfig = [
     <link rel="stylesheet" href="../assets/css/dist/user-list.css">
     <link rel="stylesheet" href="../assets/css/dist/footer.css">
     <script src="../components/menu/menu.js" defer type="module"></script>
+    <script src="../components/statistics/statistics.js" defer type="module"></script>
     <title>Octopus Booking</title>
 </head>
 
@@ -33,6 +34,7 @@ $pageConfig = [
 
         <main class="page__main">
             <h2 class="heading">Statistics</h2>
+            <?php include("../components/statistics/statistics.php") ?>
         </main>
 
         <?php include("../components/footer/footer.php") ?>
