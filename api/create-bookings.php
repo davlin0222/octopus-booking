@@ -25,14 +25,33 @@ try {
     $userEmail = $_SESSION["user"]["email"];
 
     $rawBooking = json_encode($requestBody["bookings"], JSON_PRETTY_PRINT);
-    sendEmail($userEmail, "Booking confirmation for {$requestBody["date"]}", "Bookings in json format: \n{$rawBooking}");
+
+    // Start a background job to send emails
+    $jobId = startBackgroundJob('sendEmails', [$userEmail, "Booking confirmation for {$requestBody["date"]}", "Bookings in json format: \n{$rawBooking}"]);
 
     // foreach ($requestBody["invitations"] as $email) {
     //     sendEmail($email, "Meeting invitation {$requestBody["date"]}", "Bookings in json format: \n{$rawBooking}");
     // }
 
     echo jsonResponse(true, ["insertedId" => $insertId]);
+
+    if (isset($_GET['run-background-job'])) {
+        // Run the specified function with arguments
+        $jobParams = json_decode(urldecode($_GET['run-background-job']), true);
+        $function = $jobParams[0];
+        $args = $jobParams[1];
+        call_user_func_array($function, $args);
+    }
 } catch (\Throwable $exception) {
     echo JsonErrorResponse($exception);
     exit();
+}
+
+
+// Function to start a background job
+function startBackgroundJob($function, $args)
+{
+    $command = "php -f " . __FILE__ . " --run-background-job=" . urlencode(json_encode([$function, $args]));
+    $output = shell_exec($command);
+    return $output;
 }
