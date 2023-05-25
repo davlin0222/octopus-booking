@@ -62,7 +62,7 @@ function renderSelectedTimesSummery(aggregatedSelectedTimes) {
 
         const paragraph = document.createElement('p')
         paragraph.classList.add('selected-times__item')
-        paragraph.innerText = `Room ${roomId}: ${startHour}-${endHour}`
+        paragraph.innerHTML = `Room ${roomId}: <br>${startHour}-${endHour}`
 
         selectedTimesElement.appendChild(paragraph)
     })
