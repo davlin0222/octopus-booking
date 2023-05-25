@@ -2,7 +2,9 @@ import { clockFormatHour } from '../../../assets/js/time-utils.js'
 
 export function updateSelectedTimes() {
     const selectedCells = Array.from(
-        document.querySelectorAll('.booking-chart__booking-cell._selected')
+        document.querySelectorAll(
+            '.booking-chart__booking-cell._selected, .booking-chart__booking-cell._selected-user-booking'
+        )
     )
 
     const selectedTimes = selectedCells.map((aSelectedCell) => ({
