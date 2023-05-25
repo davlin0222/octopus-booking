@@ -18,7 +18,7 @@ async function bookButton_onClick(e) {
     const success = /*await*/ createBookings(selectedBookings, selectedDate, invitations)
     console.log(`bookButton_onClick  success:`, success)
 
-    if (!success) return
+    // if (!success) return
 
     // window.location.reload()
 
@@ -35,6 +35,9 @@ async function bookButton_onClick(e) {
     invitationsListItemInputs.forEach((input) => {
         input.checked = false
     })
+
+    const selectedTimesElement = document.querySelector('#selectedItems')
+    selectedTimesElement.innerHTML = ''
 }
 
 async function cancelBookingsButton_onClick(e) {
