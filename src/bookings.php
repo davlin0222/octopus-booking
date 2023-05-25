@@ -80,7 +80,6 @@ function getBookingStatistics($startDate, $endDate)
 
 function getTotalNumberOfHoursBooked()
 {
-
     $query =
         "SELECT COUNT(*) AS row_count FROM booking_times;";
     [$result] = executeQuery($query);

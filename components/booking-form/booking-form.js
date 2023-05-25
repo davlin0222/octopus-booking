@@ -18,7 +18,7 @@ async function bookButton_onClick(e) {
     const success = /*await*/ createBookings(selectedBookings, selectedDate, invitations)
     console.log(`bookButton_onClick  success:`, success)
 
-    // if (!success) return
+    if (!success) return
 
     // window.location.reload()
 
